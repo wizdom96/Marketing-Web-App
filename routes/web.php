@@ -34,12 +34,18 @@ Route::get('register', function () {
 Route::get('login', function () {
     return view('login');
 });
+Route::get('post-content', function () {
+    return view('postContent');
+});
 
   Route::get('login', 'AuthController@index');
   Route::post('post-login', 'AuthController@postLogin'); 
   Route::get('register', 'AuthController@registration');
   Route::post('post-register', 'AuthController@postRegistration'); 
   Route::get('dashboard', 'AuthController@dashboard'); 
+  Route::post('post-content','postContent@insertPost');
+  
+
   Route::get('logout', 'AuthController@logout');
 Auth::routes();
 
