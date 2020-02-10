@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+<script src="js/get.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -27,7 +27,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="{{Request::path() === '/' ? 'nav-item active' : ''}}">
-            <a class="nav-link" href="http://localhost/Laravel/blog/public/">Home
+            <a class="nav-link" href="http://localhost/Laravel/public/">Home
               
             </a>
           </li>
@@ -61,8 +61,9 @@
   </header>
   
 <body>
+
     <div class="container">
-    @yield('content')
+    @yield('index')
     @yield('about')
     @yield ('advertise')
     @yield ('login')
@@ -84,6 +85,7 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/model.js"></script>
 
 </html>
     

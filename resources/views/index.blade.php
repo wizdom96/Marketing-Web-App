@@ -1,7 +1,7 @@
 @extends('layout')
 
 
-@section ('content')
+@section ('index')
     
     <!-- /.row -->
 
