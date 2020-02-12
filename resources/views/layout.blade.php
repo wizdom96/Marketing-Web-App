@@ -65,7 +65,7 @@
     @yield('index')
     @yield('about')
     @yield ('advertise')
-    @yield ('product_id')
+    @yield ('addpost')
     @yield ('login')
     @yield ('register')
     @yield ('dashboard')

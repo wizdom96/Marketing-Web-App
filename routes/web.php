@@ -27,15 +27,15 @@ Route::get('advertise', function () {
     return view('advertise');
 });
 
-Route::get('register', function () {
-    return view('register');
-});
 
 Route::get('login', function () {
     return view('login');
 });
 Route::get('post-content', function () {
     return view('postContent');
+});
+Route::get('test', function () {
+    return view('small');
 });
 
   Route::get('login', 'AuthController@index');
@@ -45,8 +45,12 @@ Route::get('post-content', function () {
   Route::get('dashboard', 'AuthController@dashboard'); 
   Route::post('post-content','postContent@insertPost');
   
-  Route::get('/','advertise@index');
-  Route::get('/product/{id}', 'advertise@view_product');
+  Route::get('/', 'advertise@index'); 
+  Route::get('product/{id}','advertise@view_product');
+
+
+  Route::get('addpost','addpost@index');
+  Route::post('createpost', 'addpost@insert');
  
 
 Route::get('logout', 'AuthController@logout');
