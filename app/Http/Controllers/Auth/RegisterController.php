@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'password_again' => ['required', 'string', 'max:255', 'match:password'],
         ]);
+        
     }
 
     /**

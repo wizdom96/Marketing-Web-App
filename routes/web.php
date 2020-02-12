@@ -45,12 +45,14 @@ Route::get('post-content', function () {
   Route::get('dashboard', 'AuthController@dashboard'); 
   Route::post('post-content','postContent@insertPost');
   
+  Route::get('/','advertise@index');
+  Route::get('/product/{id}', 'advertise@view_product');
+ 
 
-  Route::get('logout', 'AuthController@logout');
+Route::get('logout', 'AuthController@logout');
+
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

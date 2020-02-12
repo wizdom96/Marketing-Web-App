@@ -2,74 +2,47 @@
 @section ('index')
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<form id="carForm" class="">
-<div class="form-group">
-  <select name="make" id="make">
-    <option value="0">Choose car brand:</option>
-    <option value="Audi">Audi</option> <!-- These values are now make names -->
-    <option value="BMW">BMW</option>
-    <option value="VW">VW</option>
-    <option value="Daewoo">Daewoo</option>
-    <option value="Peugeot">Peugeot</option>
-    
-</div>
-  </select>
-  <select name="model" id="model">
-    <option value="0">Select model:</option>
-    <option class="318i" value="318i" data-make="BMW">318i</option>
-    <option class="X2" value="X2" data-make="BMW">X2</option>
-    <option class="lanos" value="Lanos" data-make="Daewoo">Lanos</option>
-    <option class="lanos" value="Nexia" data-make="Daewoo">Nexia</option>
-    <option class="Audi" value="A3" data-make="Audi">A3</option>
-    <option class="Audi" value="A6" data-make="Audi">A6</option>
-    <option class="VW" value="GolfV" data-make="VW">GolfV</option>
-    <option class="VW" value="Passat" data-make="VW">Passat</option>
-    <option class="Peugeot" value="206" data-make="Peugeot">206</option>
-    <option class="Peugeot" value="307" data-make="Peugeot">207</option>
-  </select>
-  <button type="submit">Submit</button>
-</form>
-<br><br>
-    <div class="row">
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /.row -->
 
+<form action="{{url('search')}}" method="POST">
+<div class="row justify-content-center">
+
+                        <div class="col-12 col-md-10 col-lg-8">                   
+                                <div class="card-body row no-gutters align-items-center">
+                                
+                                    <div class="col-auto">
+                                        <i class="fas fa-search h4 text-body"></i>
+                                    </div>
+                                    
+                                    <div class="col">
+                                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
+                                    </div>
+                                    &nbsp;
+                                    <div class="col-auto">
+                                        <button class="btn btn-lg btn-primary" type="submit">Search</button>
+                                    </div>        
+                            </form>
+                        </div>
+                       
+                    </div>
+
+
+<br><br><br><br><br><br><br>
+
+
+
+ @foreach ($results as $result)
+ <div class="container">
+ <div class="row">
+
+          <img  src="http://placehold.it/300x200"  alt="">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 >{{ $result->title }}&nbsp&nbsp&nbsp&nbsp{{ $result->price }}$ <br>
+          <a href="product/{{$result->id}}" class="btn-primary btn-sm" >Find Out More!</a></h4>
+        </div>
+        <br>
+    </div>
   </div>
-  <script src="js/get.js"></script>
+ 
+ 
+ 
+  @endforeach
+  
 @endsection
