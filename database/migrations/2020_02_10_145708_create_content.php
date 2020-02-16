@@ -28,6 +28,7 @@ class CreateContent extends Migration
             $table->string('fuel');
             $table->string('km');
             $table->string('type');
+            $table->string('image');
             $table->string('approved');
             $table->rememberToken();
             $table->timestamps();

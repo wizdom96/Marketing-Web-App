@@ -49,8 +49,9 @@ Route::get('test', function () {
   Route::get('product/{id}','advertise@view_product');
 
 
-  Route::get('addpost','addpost@index');
-  Route::post('createpost', 'addpost@insert');
+
+  Route::get('addpost','addpost@index')->name('profile');;
+  Route::post('createpost', 'addpost@insert')->name('profile.update');;
  
 
 Route::get('logout', 'AuthController@logout');

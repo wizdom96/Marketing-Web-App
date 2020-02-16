@@ -19,32 +19,10 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Make') }}</label>
                             <div class="col-md-6">
                             <select name="make" id="make">
-                                <option value="0">Select Make</option>
-                                <option value="astonmartin">Aston Martin</option>
-                                <option value="audi">Audi</option>
-                                <option value="bentley">Bentley</option>
-                                <option value="bmw">BMW</option>
-                                <option value="daimlerChrysler">DaimlerChrysler</option>
-                                <option value="ferrari">Ferrari</option>
-                                <option value="ford">Ford</option>
-                                <option value="gm">GM</option>
-                                <option value="honda">Honda</option>
-                                <option value="hyundai">Hyundai</option>
-                                <option value="jaguar">Jaguar</option>
-                                <option value="kia">KIA</option>
-                                <option value="lamborghini">Lamborghini</option>
-                                <option value="landrover">Land Rover</option>
-                                <option value="lotus">Lotus</option>
-                                <option value="maserati">Maserati</option>
-                                <option value="mazda">Mazda</option>
-                                <option value="mercedes">Mercedes</option>
-                                <option value="mitsubishi">Mitsubishi</option>
-                                <option value="nissan">Nissan</option>
-                                <option value="porsche">Porsche</option>
-                                <option value="suzuki">Suzuki</option>
-                                <option value="toyota">Toyota</option>
-                                <option value="volkswagen">Volkswagen</option>
-                                <option value="volvo">Volvo</option>
+                            @foreach ($results as $result)
+                                <option value="{{$result->car}}">{{$result->car}}</option>
+                                {{$result->id}}
+                                @endforeach
                                 </select>
                             </div>
                         </div> 
@@ -54,104 +32,14 @@
                             <div class="col-md-6">
                             <select name="model" id="model">
 
-                                <option value="0">Select Model</option>
-                                <option value="a8"  data-make="audi">A8</option>
-                                <option value="a3"  data-make="audi">A3</option>
-                                <option value="a4"  data-make="audi">A4</option>
-                                <option value="a6"  data-make="audi">A6</option>
-                                <option value="tt"  data-make="audi">TT</option>
-                                <option value="arnage"  data-make="bentley">Arnage</option>
-                                <option value="continental"  data-make="bentley">Continental</option>
-                                <option value="325"  data-make="bmw">325</option>
-                                <option value="330"  data-make="bmw">330</option>
-                                <option value="530"  data-make="bmw">530</option>
-                                <option value="550"  data-make="bmw">550</option>
-                                <option value="m3"  data-make="bmw">M3</option>
-                                <option value="m5"  data-make="bmw">M5</option>
-                                <option value="z4"  data-make="bmw">Z4</option>
-                                <option value="300c"  data-make="daimlerChrysler">300C</option>
-                                <option value="caravan"  data-make="daimlerChrysler">Caravan</option>
-                                <option value="charger"  data-make="daimlerChrysler">Charger</option>
-                                <option value="durango"  data-make="daimlerChrysler">Durango</option>
-                                <option value="ram"  data-make="daimlerChrysler">Ram</option>
-                                <option value="stratus"  data-make="daimlerChrysler">Stratus</option>
-                                <option value="f430"  data-make="ferrari">F430</option>
-                                <option value="612"  data-make="ferrari">612</option>
-                                <option value="f141"  data-make="ferrari">F141</option>
-                                <option value="escape"  data-make="ford">Escape</option>
-                                <option value="explorer"  data-make="ford">Explorer</option>
-                                <option value="focus"  data-make="ford">Focus</option>
-                                <option value="f150"  data-make="ford">F150</option>
-                                <option value="freestar"  data-make="ford">Freestar</option>
-                                <option value="gt"  data-make="ford">GT</option>
-                                <option value="mustang"  data-make="ford">Mustang</option>
-                                <option value="taurus"  data-make="ford">Taurus</option>
-                                <option value="thunderbird"  data-make="ford">Thunderbird</option>
-                                <option value="c15000"  data-make="gm">C15000</option>
-                                <option value="colorado"  data-make="gm">Colorado</option>
-                                <option value="corvette"  data-make="gm">Corvette</option>
-                                <option value="escalade"  data-make="gm">Escalade</option>
-                                <option value="solstice"  data-make="gm">Solstice</option>
-                                <option value="c15000"  data-make="gm">C15000</option>
-                                <option value="accord"  data-make="honda">Accord</option>
-                                <option value="civic"  data-make="honda">Civic</option>
-                                <option value="crx"  data-make="honda">Crx</option>
-                                <option value="nsx"  data-make="honda">Nsx</option>
-                                <option value="jazz"  data-make="honda">Jazz</option>
-                                <option value="accent"  data-make="hyundai">Accent</option>
-                                <option value="sonata"  data-make="hyundai">Sonata</option>
-                                <option value="elantra"  data-make="hyundai">Elantra</option>
-                                <option value="stype"  data-make="jaguar">S-Type</option>
-                                <option value="xj8"  data-make="jaguar">XJ8</option>
-                                <option value="xtype"  data-make="jaguar">X-Type</option>
-                                <option value="sorento"  data-make="kia">Sorento</option>
-                                <option value="rio"  data-make="kia">Rio</option>
-                                <option value="sportage"  data-make="kia">Sportage</option>
-                                <option value="gallardo"  data-make="lamborghini">Gallardo</option>
-                                <option value="murcielago"  data-make="lamborghini">Murcielago</option>
-                                <option value="lr3"  data-make="landrover">LR3</option>
-                                <option value="rangerover"  data-make="landrover">Range Rover</option>
-                                <option value="elise"  data-make="lotus">Elise</option>
-                                <option value="cambiocorsa"  data-make="maserati">Cambiocorsa</option>
-                                <option value="quattroporte"  data-make="maserati">Quattroporte</option>]
-                                <option value="3"  data-make="mazda">3</option>
-                                <option value="5"  data-make="mazda">5</option>
-                                <option value="6"  data-make="6">6</option>
-                                <option value="rx8"  data-make="mazda">RX-8</option>
-                                <option value="mx5"  data-make="mazda">MX-5</option>
-                                <option value="c230"  data-make="mercedes">C230</option>
-                                <option value="c280"  data-make="mercedes">C280</option>
-                                <option value="clk"  data-make="mercedes">CLK55</option>
-                                <option value="e320"  data-make="mercedes">E320</option>
-                                <option value="maybach"  data-make="mercedes">Maybach</option>
-                                <option value="slr"  data-make="mercedes">SLR</option>
-                                <option value="eclipse"  data-make="mitsubishi">Eclipse</option>
-                                <option value="galant"  data-make="mitsubishi">Galant</option>
-                                <option value="lancer"  data-make="mitsubishi">Lancer</option>
-                                <option value="outlander"  data-make="mitsubishi">Outlander</option>
-                                <option value="350z"  data-make="nissan">350Z</option>
-                                <option value="altima"  data-make="nissan">Altima</option>
-                                <option value="g35"  data-make="nissan">G35</option>
-                                <option value="xterra"  data-make="nissan">Xterra</option>
-                                <option value="skyline"  data-make="nissan">Skyline</option>
-                                <option value="boxster"  data-make="porsche">Boxster</option>
-                                <option value="cayenne"  data-make="porsche">Cayenne</option>
-                                <option value="cayman"  data-make="porsche">Cayman</option>
-                                <option value="aerio"  data-make="suzuki">Aeiro</option>
-                                <option value="grandvitara"  data-make="suzuki">Grand Vitara</option>
-                                <option value="camry"  data-make="toyota">Camry</option>
-                                <option value="is250"  data-make="toyota">IS250</option>
-                                <option value="scion"  data-make="toyota">Scion</option>
-                                <option value="highlander"  data-make="toyota">Highlander</option>
-                                <option value="golf"  data-make="volkswagen">Golf</option>
-                                <option value="pheaton"  data-make="volkswagen">Pheaton</option>
-                                <option value="jetta"  data-make="volkswagen">Jetta</option>
-                                <option value="touareg"  data-make="volkswagen">Touareg</option>
-                                <option value="s40"  data-make="volvo">S40</option>
-                                <option value="s60"  data-make="volvo">S60</option>
-                                <option value="s80"  data-make="volvo">S80</option>
-                                <option value="v50"  data-make="volvo">V50</option>
-                                <option value="xc90"  data-make="volvo">XC90</option>
+                            @foreach ($resultsmodel as $resultmodel);
+                               
+                            https://stackoverflow.com/questions/24281678/laravel-blade-using-if-condition-inside-foreach
+                                
+                                <option value="{{$resultmodel->car_model}}" data-make="volvo">{{$resultmodel->car_model}}</option>
+                                    
+                                    
+                                @endforeach
                                 </select>
                             </div>
                         </div>
@@ -360,6 +248,24 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="km" class="col-md-4 col-form-label text-md-right">{{ __('Images') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="images" type="file"  name="images" required>
+
+                                @error('images')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+
+                        
+                  
                         
 
                         <div class="form-group row mb-0">

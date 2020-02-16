@@ -11,7 +11,9 @@ class addpost extends Controller
 {
     public function index()
     {
-        return view('addpost');
+        $results = \DB::select('select * from cars');
+        $resultsmodel = \DB::select('select * from car_model');
+        return view('addpost',['results'=>$results],['resultsmodel'=>$resultsmodel]);
     }
 
     public function insert(Request $request){
@@ -30,7 +32,8 @@ class addpost extends Controller
             $transmission = $request->input('transmission'),
             $fuel = $request->input('fuel'),
             $km = $request->input('km'),
-            $type = $request->input('type')
+            $type = $request->input('type'),
+           
                  ]);
 
             $data = array(
@@ -46,13 +49,19 @@ class addpost extends Controller
                 'transmission'=>$transmission,
                 'fuel'=>$fuel,
                 'km'=>$km,
-                'type'=>$type
+                'type'=>$type,
+            
             );
             
             DB::table('content')->insert($data);
+
+
             
     }
 
-
+    public function getImageAttribute()
+    {
+       return $this->profile_image;
+    }
 
 }
