@@ -34,13 +34,14 @@
  <div class="container">
  <div class="row">
 
-          <img  src="http://placehold.it/300x200"  alt="">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 >{{ $result->title }} <br>
+          <img  src="uploads/content/{{$result->image}}" width="300px" height="125px" alt="">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 >{{ $result->title }} <br>
           <p>{{ $result->price }} €</p>
           <a href="product/{{$result->id}}" class="btn-primary btn-sm" >Find Out More!</a></h4>
         </div>
         <br>
     </div>
   </div>
+  <br><br>  
  
  
  

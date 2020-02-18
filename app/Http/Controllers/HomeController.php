@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
@@ -23,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $results = \DB::select('select * from content where approved=0');
+        return view('home',['results'=>$results]);
+        
     }
+
+    public function approvead($id){
+        \DB::table('content')->where('id', $id)->update(array('approved' => '1'));
+            return back();
+       }
 }

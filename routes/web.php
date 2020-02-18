@@ -27,6 +27,10 @@ Route::get('advertise', function () {
     return view('advertise');
 });
 
+Route::get('product', function () {
+    return view('index');
+});
+
 
 Route::get('login', function () {
     return view('login');
@@ -34,9 +38,7 @@ Route::get('login', function () {
 Route::get('post-content', function () {
     return view('postContent');
 });
-Route::get('test', function () {
-    return view('small');
-});
+
 
   Route::get('login', 'AuthController@index');
   Route::post('post-login', 'AuthController@postLogin'); 
@@ -50,14 +52,14 @@ Route::get('test', function () {
 
 
 
-  Route::get('addpost','addpost@index')->name('profile');;
-  Route::post('createpost', 'addpost@insert')->name('profile.update');;
+ Route::get('/addpost','Postaddcontroller@index');
+ Route::post('/addcontent', 'Postaddcontroller@store')->name('addcontent');
  
 
 Route::get('logout', 'AuthController@logout');
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/admin', 'HomeController@index')->name('admin');
+Route::get('/approvead/{id}','HomeController@approvead')->name('approve');
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@index')->name('home');

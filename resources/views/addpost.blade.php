@@ -12,11 +12,12 @@
                 <div class="card-header">{{ __('Auto Details') }}</div>
 
                 <div class="card-body">
-                    <form id="carForm" method="POST"  action="{{url('createpost')}}">
-                    <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+                    <form action="{{ route('addcontent') }}" method="POST" enctype="multipart/form-data">
+    
+                    {{csrf_field()}}
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Make') }}</label>
+                            <label for="make" class="col-md-4 col-form-label text-md-right">{{ __('Make') }}</label>
                             <div class="col-md-6">
                             <select name="make" id="make">
                             @foreach ($results as $result)
@@ -27,7 +28,7 @@
                             </div>
                         </div> 
                         <div class="form-group row">
-                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Model') }}</label>
+                            <label for="model" class="col-md-4 col-form-label text-md-right">{{ __('Model') }}</label>
 
                             <div class="col-md-6">
                             <select name="model" id="model">
@@ -252,7 +253,7 @@
                             <label for="km" class="col-md-4 col-form-label text-md-right">{{ __('Images') }}</label>
 
                             <div class="col-md-6">
-                                <input id="images" type="file"  name="images" required>
+                                <input id="image" type="file"  name="image" required>
 
                                 @error('images')
                                     <span class="invalid-feedback" role="alert">
@@ -261,12 +262,6 @@
                                 @enderror
                             </div>
                         </div>
-
-
-
-                        
-                  
-                        
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
