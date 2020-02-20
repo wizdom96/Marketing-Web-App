@@ -60,9 +60,14 @@ class AuthController extends Controller
     {
  
       if(Auth::check()){
-        return view('dashboard');
+        return view('home');
       }
        return Redirect::to("login")->withSuccess('Opps! You do not have access');
+    }
+    public function viewads($user_id){
+
+        $results = \DB::table('content')->where('user_id', $user_id)->get();
+        return view('details',['results'=>$results]);
     }
  
     public function create(array $data)

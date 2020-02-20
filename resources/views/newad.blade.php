@@ -1,6 +1,6 @@
-@extends('layout')
+@extends('layouts.app')
 
-@section('addpost')
+@section('newad')
 <head>
 
 
@@ -12,7 +12,7 @@
                 <div class="card-header">{{ __('Auto Details') }}</div>
 
                 <div class="card-body">
-                    <form action="{{ route('addcontent') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ ('postadd') }}" method="POST" enctype="multipart/form-data">
     
                     {{csrf_field()}}
 
@@ -35,9 +35,9 @@
 
                             @foreach ($resultsmodel as $resultmodel);
                                
-                            https://stackoverflow.com/questions/24281678/laravel-blade-using-if-condition-inside-foreach
+                          
                                 
-                                <option value="{{$resultmodel->car_model}}" data-make="volvo">{{$resultmodel->car_model}}</option>
+                                <option value="{{$resultmodel->car_model}}" >{{$resultmodel->car_model}}</option>
                                     
                                     
                                 @endforeach
@@ -262,6 +262,8 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <input id="invisible_id" name="invisible" type="hidden" value="{{((Auth()->user()->id))}}">
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

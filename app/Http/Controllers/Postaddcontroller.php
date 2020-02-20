@@ -9,8 +9,8 @@ class Postaddcontroller extends Controller
     public function index()
     {
         $results = \DB::select('select * from cars');
-        $resultsmodel = \DB::select('select * from car_model');
-        return view('addpost',['results'=>$results],['resultsmodel'=>$resultsmodel]);
+        $resultsmodel = \DB::select('select * from car_models');
+        return view('newad',['results'=>$results],['resultsmodel'=>$resultsmodel]);
     }
 
     public function store(Request $request) {
@@ -29,7 +29,7 @@ class Postaddcontroller extends Controller
         $content->km = $request->input('km');
         $content->power = $request->input('power');
         $content->type = $request->input('type');
-      
+        $content->user_id = $request->input('invisible');
         if ($request->hasfile('image')){
 
             $file = $request->file('image');

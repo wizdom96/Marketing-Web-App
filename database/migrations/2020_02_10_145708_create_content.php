@@ -29,7 +29,8 @@ class CreateContent extends Migration
             $table->string('km');
             $table->string('type');
             $table->string('image')->nullable();
-            $table->string('approved');
+            $table->string('approved')->default('0');
+            $table->string('user_id');
             $table->rememberToken();
             $table->timestamps();
         });

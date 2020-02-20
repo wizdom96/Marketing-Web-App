@@ -38,5 +38,5 @@ extends ('layout')
     </div>
   </div>
 </div>
- 
+
  @endsection

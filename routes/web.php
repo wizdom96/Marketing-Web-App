@@ -44,7 +44,13 @@ Route::get('post-content', function () {
   Route::post('post-login', 'AuthController@postLogin'); 
   Route::get('register', 'AuthController@registration');
   Route::post('post-register', 'AuthController@postRegistration'); 
-  Route::get('dashboard', 'AuthController@dashboard'); 
+
+  Route::get('dashboard/', 'AuthController@dashboard');
+  Route::get('dashboard/newad','Postaddcontroller@index');
+  Route::post('dashboard/postadd', 'Postaddcontroller@store')->name('postadd');
+
+  Route::get('dashboard/{user_id}', 'AuthController@viewads')->name('account'); 
+  
   Route::post('post-content','postContent@insertPost');
   
   Route::get('/', 'advertise@index'); 
@@ -52,14 +58,11 @@ Route::get('post-content', function () {
 
 
 
- Route::get('/addpost','Postaddcontroller@index');
- Route::post('/addcontent', 'Postaddcontroller@store')->name('addcontent');
+ Route::post('dashboard/newad', 'Postaddcontroller@store')->name('addcontent');
  
 
 Route::get('logout', 'AuthController@logout');
 
 Auth::routes();
-Route::get('/admin', 'HomeController@index')->name('admin');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/approvead/{id}','HomeController@approvead')->name('approve');
-Auth::routes();
-Route::get('/admin', 'HomeController@index')->name('home');

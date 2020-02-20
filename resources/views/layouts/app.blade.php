@@ -49,12 +49,37 @@
                                 </li>
                             @endif
                         @else
+                        @if ((Auth()->user()->permission) === '1' )
+                        <li class="nav-item dropdown">
+                                <a id="navbar" class="nav-link " href="{{ route('register') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <b>View all users</b><span class="caret"></span>
+                                </a>
+                            @else
+                            <li class="nav-item dropdown">
+                                <a id="navbar" class="nav-link " href="{{ url('dashboard/newad') }}"   >
+                                    <b>Make new ad</b><span class="caret"></span>
+                                </a></li>
+                                <li class="nav-item dropdown">
+                                <a id="navbar" class="nav-link " href="{{ route('account', ['userId' => Auth::id()]) }}"   >
+                                <b>View active ads</b><span class="caret"></span>
+                                </a></li>
+
+
+                                    @endif
+                               
+                            
+                            
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                <b> {{ Auth::user()->email }} </b><span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('dashboard') }}">
+                                       
+                                        Profile
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -74,6 +99,8 @@
 
         <main class="py-4">
             @yield('content')
+            @yield('newad')
+            @yield('details')
         </main>
     </div>
 </body>
