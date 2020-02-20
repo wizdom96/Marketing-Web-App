@@ -51,9 +51,25 @@
                         @else
                         @if ((Auth()->user()->permission) === '1' )
                         <li class="nav-item dropdown">
-                                <a id="navbar" class="nav-link " href="{{ route('register') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbar" class="nav-link " href="{{ url('dashboard/allusers') }}" >
                                 <b>View all users</b><span class="caret"></span>
                                 </a>
+                                
+                                <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <b> Make </b><span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{url('dashboard/make')}}">
+                                       
+                                        Make new car
+                                    </a>
+                                    <a class="dropdown-item" href="makemodel">
+                                       
+                                        Make new car model
+                                    </a>
+                                   
                             @else
                             <li class="nav-item dropdown">
                                 <a id="navbar" class="nav-link " href="{{ url('dashboard/newad') }}"   >
@@ -80,6 +96,15 @@
                                        
                                         Profile
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('showform', ['userId' => Auth::id()]) }}">
+                                       
+                                        Change details
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('passwordform', ['userId' => Auth::id()]) }}">
+                                       
+                                        Change password
+                                    </a>
+                                    
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -101,7 +126,22 @@
             @yield('content')
             @yield('newad')
             @yield('details')
+            @yield('updateform')
+            @yield('make')
         </main>
     </div>
 </body>
+<br><br><br><br>
+<footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; cars.mk <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+        </script> </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  
+</html>
 </html>

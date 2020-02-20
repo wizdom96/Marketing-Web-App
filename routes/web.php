@@ -43,20 +43,32 @@ Route::get('post-content', function () {
   Route::get('login', 'AuthController@index');
   Route::post('post-login', 'AuthController@postLogin'); 
   Route::get('register', 'AuthController@registration');
-  Route::post('post-register', 'AuthController@postRegistration'); 
+  Route::post('user-registration', 'AuthController@userRegistration'); 
 
   Route::get('dashboard/', 'AuthController@dashboard');
   Route::get('dashboard/newad','Postaddcontroller@index');
   Route::post('dashboard/postadd', 'Postaddcontroller@store')->name('postadd');
 
-  Route::get('dashboard/{user_id}', 'AuthController@viewads')->name('account'); 
+  Route::post('dashboard/make','advertise@createmake');
+  Route::get('dashboard/make','advertise@viewmake');
+  Route::post('dashboard/makemodel','advertise@createmakemodel');
+  Route::get('dashboard/makemodel','advertise@viewmake');
+
   
+  Route::get('dashboard/allusers', 'Authcontroller@allusers')->name('allusers');
+  Route::get('dashboard/{user_id}', 'AuthController@viewads')->name('account'); 
+
+  Route::get('dashboard/update/{user_id}', 'AuthController@showform')->name('showform'); 
+  Route::post('dashboard/update/{user_id}', 'AuthController@storeform')->name('storeform'); 
+
+  Route::get('dashboard/updatepassword/{user_id}', 'AuthController@passwordform')->name('passwordform'); 
+  Route::post('dashboard/updatepassword/{user_id}', 'AuthController@passwordstore')->name('changepassword'); 
+
   Route::post('post-content','postContent@insertPost');
   
   Route::get('/', 'advertise@index'); 
   Route::get('product/{id}','advertise@view_product');
-
-
+  
 
  Route::post('dashboard/newad', 'Postaddcontroller@store')->name('addcontent');
  
@@ -66,3 +78,6 @@ Route::get('logout', 'AuthController@logout');
 Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/approvead/{id}','HomeController@approvead')->name('approve');
+Route::get('/deletead/{id}','HomeController@deletead')->name('delete');
+Route::get('/dashboard/allusers/delete/{id}','HomeController@deleteuser')->name('delete');
+

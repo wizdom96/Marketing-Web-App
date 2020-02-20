@@ -95,8 +95,6 @@
         <li>Fuel: {{$r->fuel}}</li>
         <li>Transmission: {{$r->transmission}}</li>
         
-        
-        
       </ul>
     </div>
     @endforeach

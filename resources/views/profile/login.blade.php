@@ -32,5 +32,5 @@
                   <a class="small" href="{{url('registration')}}">Sign Up</a></div>
               </form>
     </div>
-<br><br>
+
 @endsection

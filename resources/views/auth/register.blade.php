@@ -8,7 +8,7 @@
                 <div class="card-header"></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{url('post-register')}}">
+                    <form method="POST" action="{{url('user-registration')}}">
                         @csrf
 
                         <div class="form-group row">
@@ -99,5 +99,5 @@
             </div>
         </div>
     </div>
-</div>
+</div><br><br>
 @endsection

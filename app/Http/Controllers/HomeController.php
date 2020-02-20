@@ -34,4 +34,14 @@ class HomeController extends Controller
         \DB::table('content')->where('id', $id)->update(array('approved' => '1'));
             return back();
        }
+
+       public function deletead($id){
+        \DB::table('content')->where('id', $id)->delete();
+            return back();
+       }
+       public function deleteuser($id){
+        \DB::table('users')->where('id', $id)->delete();
+            return back();
+       }
+      
 }
