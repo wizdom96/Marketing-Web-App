@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
+use App\Postadd;
 use Illuminate\Http\Request;
 
 class advertise extends Controller
 {
     public function index() {
-        $results = \DB::select('select * from content where approved=1');
+        $results = Postadd::where('approved', '=', 1)->paginate(5);
+        
         return view('index',['results'=>$results]);
         
      }

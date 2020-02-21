@@ -46,5 +46,10 @@
  
  
   @endforeach
-  
+  <div class="container">
+ <div class="row">
+  {{ $results->links() }}
+</div>
+</div>
+
 @endsection

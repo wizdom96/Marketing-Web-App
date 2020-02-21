@@ -49,7 +49,8 @@ Route::get('post-content', function () {
   Route::get('dashboard/', 'AuthController@dashboard');
   Route::get('dashboard/newad',array('as'=>'myform','uses'=>'Postaddcontroller@myform'));
   Route::get('dashboard/newad/ajax/{id}','Postaddcontroller@myformAjax');
-  Route::post('dashboard/postadd', 'Postaddcontroller@store')->name('postadd');
+
+  Route::post('dashboard/postadd', 'Postaddcontroller@store');
 
   Route::post('dashboard/make','advertise@createmake');
   Route::get('dashboard/make','advertise@viewmake');

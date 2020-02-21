@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Postadd;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use DB;
