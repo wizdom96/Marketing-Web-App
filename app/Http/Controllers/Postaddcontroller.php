@@ -1,16 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Postadd;
+
+
+use App\Http\Requests;
 use Illuminate\Http\Request;
+use DB;
 
 class Postaddcontroller extends Controller
 {
-    public function index()
+    public function myform()
     {
-        $results = \DB::select('select * from cars');
-        $resultsmodel = \DB::select('select * from car_models');
-        return view('newad',['results'=>$results],['resultsmodel'=>$resultsmodel]);
+        $make = DB::table("cars")->pluck("car","id");
+        return view('newad',compact('make'));   
+    
+    }
+
+    public function myformAjax($id){
+       $model = DB::table("car_models")
+       ->where("car_id",$id)
+    //    ->pluck("car_model","id");
+       ->get();
+    //    return json_encode($model);
+       return $model;
     }
 
     public function store(Request $request) {

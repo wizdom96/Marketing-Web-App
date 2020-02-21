@@ -50,10 +50,10 @@
                             </div>
                         </div> 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Make Car') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('New Model') }}</label>
 
                             <div class="col-md-6">
-                                <input id="model" type="text" name="model" value="{{ old('model') }}" required autocomplete="model" autofocus>
+                                <input id="model" type="text" name="model"  required autocomplete="model" autofocus>
                                
                             </div>
                            

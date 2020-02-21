@@ -8,6 +8,7 @@ Use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Session;
+
  
 class AuthController extends Controller
 {
@@ -19,6 +20,7 @@ class AuthController extends Controller
     {
         return view('register');
     }
+    
 
     public function postLogin(Request $request)
     {

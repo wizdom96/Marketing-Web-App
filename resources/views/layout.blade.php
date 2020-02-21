@@ -34,6 +34,8 @@
             <a class="nav-link" href="about">About
         </a>
           </li>
+
+              
           <li class="{{Request::path() === 'advertise' ? 'nav-item active' : ''}}">
             <a class="nav-link" href="advertise">
             Advertise</a>

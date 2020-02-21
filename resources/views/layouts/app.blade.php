@@ -15,6 +15,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -49,34 +51,41 @@
                                 </li>
                             @endif
                         @else
+
+
+                        <li class="nav-item dropdown">
+                                <a id="navbar" class="nav-link" href="http://localhost/Laravel/public/" style="color:#2B4FCA ;">
+                                <b> Home page</b><span class="caret"></span>
+                                </a>
+                                </li>
                         @if ((Auth()->user()->permission) === '1' )
                         <li class="nav-item dropdown">
-                                <a id="navbar" class="nav-link " href="{{ url('dashboard/allusers') }}" >
+                                <a id="navbar" class="nav-link" href="{{ url('dashboard/allusers') }}" style="color:#2B4FCA ;" >
                                 <b>View all users</b><span class="caret"></span>
                                 </a>
                                 
                                 <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#2B4FCA ;" v-pre>
                                 <b> Make </b><span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{url('dashboard/make')}}">
+                                <a class="dropdown-item" href="{{url('dashboard/make')}}" >
                                        
                                         Make new car
                                     </a>
-                                    <a class="dropdown-item" href="makemodel">
+                                    <a class="dropdown-item" href="{{url('dashboard/makemodel')}}" >
                                        
                                         Make new car model
                                     </a>
                                    
                             @else
                             <li class="nav-item dropdown">
-                                <a id="navbar" class="nav-link " href="{{ url('dashboard/newad') }}"   >
+                                <a id="navbar" class="nav-link " href="{{ url('dashboard/newad') }}"  style="color:#2B4FCA ;" >
                                     <b>Make new ad</b><span class="caret"></span>
                                 </a></li>
                                 <li class="nav-item dropdown">
-                                <a id="navbar" class="nav-link " href="{{ route('account', ['userId' => Auth::id()]) }}"   >
+                                <a id="navbar" class="nav-link " href="{{ route('account', ['userId' => Auth::id()]) }}" style="color:#2B4FCA ;"  >
                                 <b>View active ads</b><span class="caret"></span>
                                 </a></li>
 
@@ -85,14 +94,15 @@
                                
                             
                             
+                                    
 
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#2B4FCA ;" v-pre>
                                 <b> {{ Auth::user()->email }} </b><span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('dashboard') }}">
+                                <a class="dropdown-item" href="{{ url('dashboard') }}" >
                                        
                                         Profile
                                     </a>

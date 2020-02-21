@@ -19,31 +19,29 @@
                         <div class="form-group row">
                             <label for="make" class="col-md-4 col-form-label text-md-right">{{ __('Make') }}</label>
                             <div class="col-md-6">
-                            <select name="make" id="make">
-                            @foreach ($results as $result)
-                                <option value="{{$result->car}}">{{$result->car}}</option>
-                                {{$result->id}}
+                            <select  id="make" name="make" class="form-control">
+                            <option value="">-- Select make --</option>
+                            @foreach ($make as $key => $value)
+                            <option value="{{ $key }}">{{ $value }}</option>
+                               
                                 @endforeach
+                                
                                 </select>
+                               
                             </div>
                         </div> 
+                        
+                       
                         <div class="form-group row">
                             <label for="model" class="col-md-4 col-form-label text-md-right">{{ __('Model') }}</label>
 
                             <div class="col-md-6">
-                            <select name="model" id="model">
-
-                            @foreach ($resultsmodel as $resultmodel);
-                               
-                          
-                                
-                                <option value="{{$resultmodel->car_model}}" >{{$resultmodel->car_model}}</option>
-                                    
-                                    
-                                @endforeach
+                            <select name="model" class="form-control">
                                 </select>
                             </div>
                         </div>
+                        
+                      
 
                         <div class="form-group row">
                             <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
@@ -280,5 +278,33 @@
 </div>
 
 <br><br>
+                
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="make"]').on('change', function() {
+            var makeID = $(this).val();
+            if(makeID) {
+                $.ajax({
+                    url: 'newad/ajax/'+makeID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
 
+                        
+                        $('select[name="model"]').empty();
+                        $.each(data, function(key, value) {
+                            console.log(key);
+                            console.log(value);
+                            $('select[name="model"]').append('<option value="'+ key +'">'+ value.car_model +'</option>');
+                        });
+
+
+                    }
+                });
+            }else{
+                $('select[name="model"]').empty();
+            }
+        });
+    });
+</script>
 @endsection

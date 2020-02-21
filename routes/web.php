@@ -40,13 +40,15 @@ Route::get('post-content', function () {
 });
 
 
+
   Route::get('login', 'AuthController@index');
   Route::post('post-login', 'AuthController@postLogin'); 
   Route::get('register', 'AuthController@registration');
   Route::post('user-registration', 'AuthController@userRegistration'); 
 
   Route::get('dashboard/', 'AuthController@dashboard');
-  Route::get('dashboard/newad','Postaddcontroller@index');
+  Route::get('dashboard/newad',array('as'=>'myform','uses'=>'Postaddcontroller@myform'));
+  Route::get('dashboard/newad/ajax/{id}','Postaddcontroller@myformAjax');
   Route::post('dashboard/postadd', 'Postaddcontroller@store')->name('postadd');
 
   Route::post('dashboard/make','advertise@createmake');
