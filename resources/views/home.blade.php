@@ -37,8 +37,8 @@
  @foreach ($results as $result)
  <div class="container">
  <div class="row">
-
-          <img  src="uploads/content/{{$result->image}}" width="300px" height="125px" alt="">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4><b>{{ $result->title }}<br></b> <br>
+ <?php foreach (json_decode($result->image) as $picture) {} ?>
+          <img  src="uploads/content/<?php echo $picture ?>" width="300px" height="125px" alt="">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4><b>{{ $result->title }}<br></b> <br>
           <p>{{ $result->description }} €</p>
           <p>{{ $result->price }} €</p>
           <a href="{{ url('approvead') }}/{{$result->id}}" class="btn-primary btn-sm" onclick="return confirm('Are you sure you want to approve this ?');">Approve</a></h4>

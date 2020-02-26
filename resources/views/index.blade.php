@@ -31,10 +31,12 @@
 
 
  @foreach ($results as $result)
+
  <div class="container">
  <div class="row">
+ <?php foreach (json_decode($result->image) as $picture) {}  ?>
 
-          <img  src="uploads/content/{{$result->image}}" width="300px" height="125px" alt="">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 >{{ $result->title }} <br>
+          <img  src="uploads/content/<?php echo $picture ?>" width="300px" height="125px" alt="">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 >{{ $result->title }} <br>
           <p>{{ $result->price }} €</p>
           <a href="product/{{$result->id}}" class="btn-primary btn-sm" >Find Out More!</a></h4>
         </div>

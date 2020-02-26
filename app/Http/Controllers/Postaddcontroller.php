@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Postadd;
-use App\Http\Requests;
 use Illuminate\Http\Request;
 use DB;
 
@@ -19,15 +18,16 @@ class Postaddcontroller extends Controller
     public function myformAjax($id){
        $model = DB::table("car_models")
        ->where("car_id",$id)
-    //    ->pluck("car_model","id");
+    
        ->get();
-    //    return json_encode($model);
+   
        return $model;
     }
 
     public function store(Request $request) {
 
         $content = new Postadd();
+       
         $content->make = $request->input('make');
         $content->model = $request->input('model');
         $content->title = $request->input('title');
@@ -42,20 +42,24 @@ class Postaddcontroller extends Controller
         $content->power = $request->input('power');
         $content->type = $request->input('type');
         $content->user_id = $request->input('invisible');
-        if ($request->hasfile('image')){
+        if ($request->hasfile('filename')){
 
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move ('uploads/content/', $filename);
-            $content->image=$filename;
-        } else {
+            foreach($request->file('filename') as $image)
+
+            {
+                $name=$image->getClientOriginalName();
+                $image->move('uploads/content/', $name);
+                $data[] = $name;
+            }
+        }
+            else {
             
                 return $request;
                 $highlights->image = '';
             
         }
 
+            $content->image = json_encode($data);
             $content->save();
             return back();
     }

@@ -74,11 +74,19 @@
 
   <!-- Portfolio Item Row -->
   <div class="row">
+<div class="w3-content w3-display-container">
+<?php foreach (json_decode($r->image) as $picture) { ?>
+  <img class="mySlides" src="..\uploads\content\<?php echo $picture ?>" style="width:700px; height:400px" >
+<?php } ?>
 
-    <div class="col-md-8">
-      <img class="img-fluid" src="../uploads/content/{{$r->image}}" alt="{{$r->image}}" width="700px" height="700px">
-    </div>
+  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+</div>
+         
+         
 
+
+  
     <div class="col-md-4">
       <h3 class="my-3">Advertise description</h3>
       <p>{{$r->description}}</p>
@@ -116,4 +124,23 @@
     </div>
   </footer>
 
+  <script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
 

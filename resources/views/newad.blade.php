@@ -22,7 +22,7 @@
                             <select  id="make" name="make" class="form-control">
                             <option value="">-- Select make --</option>
                             @foreach ($make as $key => $value)
-                            <option value="{{ $key }}">{{ $value }}</option>
+                            <option id="{{$key}}" value="{{ $value }}">{{ $value }}</option>
                                
                                 @endforeach
                                 
@@ -248,19 +248,31 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="km" class="col-md-4 col-form-label text-md-right">{{ __('Images') }}</label>
+                            <label for="Images" class="col-md-4 col-form-label text-md-right">{{ __('Images') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="image" type="file"  name="image" required>
-
-                                @error('images')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="col-md input-group control-group increment" >
+                                    <input type="file" name="filename[]" class="form-control">
+                                    <div class="input-group-btn"> 
+                                    <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
                             </div>
                         </div>
-
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-md clone hide">
+                             <div class="control-group input-group" >
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             
+                             <input type="file" name="filename[]" class="form-control">
+                            <div class="input-group-btn"> 
+                          <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+                     </div>
+                 </div>
+               </div>
+</div>
                         <input id="invisible_id" name="invisible" type="hidden" value="{{((Auth()->user()->id))}}">
 
                         <div class="form-group row mb-0">
@@ -278,11 +290,25 @@
 </div>
 
 <br><br>
-                
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".btn-success").click(function(){ 
+          var html = $(".clone").html();
+          $(".increment").after(html);
+      });
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".control-group").remove();
+      });
+    });
+</script>
+
+
+ 
 <script type="text/javascript">
     $(document).ready(function() {
         $('select[name="make"]').on('change', function() {
-            var makeID = $(this).val();
+            var makeID = $(this).find('option:selected').attr('id');
             if(makeID) {
                 $.ajax({
                     url: 'newad/ajax/'+makeID,
@@ -293,9 +319,7 @@
                         
                         $('select[name="model"]').empty();
                         $.each(data, function(key, value) {
-                            console.log(key);
-                            console.log(value);
-                            $('select[name="model"]').append('<option value="'+ key +'">'+ value.car_model +'</option>');
+                            $('select[name="model"]').append('<option value="'+ value.car_model +'">'+ value.car_model +'</option>');
                         });
 
 

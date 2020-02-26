@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class advertise extends Controller
 {
     public function index() {
-        $results = Postadd::where('approved', '=', 1)->paginate(5);
+        $results = Postadd::where('approved', '=', 1)->paginate(4);
         
         return view('index',['results'=>$results]);
         
