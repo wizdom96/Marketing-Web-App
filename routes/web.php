@@ -10,10 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
 Route::get('about', function () {
     return view('about');
@@ -49,6 +48,8 @@ Route::get('post-content', function () {
   Route::get('dashboard/', 'AuthController@dashboard');
   Route::get('dashboard/newad',array('as'=>'myform','uses'=>'Postaddcontroller@myform'));
   Route::get('dashboard/newad/ajax/{id}','Postaddcontroller@myformAjax');
+ 
+  
 
   Route::post('dashboard/postadd', 'Postaddcontroller@store');
 
@@ -69,7 +70,9 @@ Route::get('post-content', function () {
 
   Route::post('post-content','postContent@insertPost');
   
-  Route::get('/', 'advertise@index'); 
+  Route::get('/', array('as'=>'index','uses'=>'advertise@index')); 
+  Route::get('/ajax/{id}','advertise@modelselect');
+
   Route::get('product/{id}','advertise@view_product');
   
 

@@ -15,6 +15,8 @@ class Postaddcontroller extends Controller
     
     }
 
+    
+
     public function myformAjax($id){
        $model = DB::table("car_models")
        ->where("car_id",$id)

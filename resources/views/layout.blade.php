@@ -15,6 +15,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/business-frontpage.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">

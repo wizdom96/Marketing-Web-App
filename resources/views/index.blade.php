@@ -1,34 +1,73 @@
 @extends('layout')
 @section ('index')
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<form action="{{url('search')}}" method="GET">
+
 <div class="row justify-content-center">
+  <form action="" class="form-inline row" name="myform" method="GET" >
 
-                        <div class="col-12 col-md-10 col-lg-8">                   
-                                <div class="card-body row no-gutters align-items-center">
+  {{csrf_field()}}
+    <div class="col-xs-8" style="border:1px solid black">
+      <input type="search" class="form-control" id="search" placeholder="Search by title">
+    </div>
+    &nbsp;&nbsp;
+    <div class="col-xs-8">
+    <select  id="make" name="make" class="form-control" placeholde="Select make">
+                                <option value="">-- Select make --</option>
+                                @foreach ($make as $key => $value)
+                                <option id="{{$key}}" value="{{ $value }}">{{ $value }}</option>
                                 
-                                    <div class="col-auto">
-                                        <i class="fas fa-search h4 text-body"></i>
-                                    </div>
+                                    @endforeach
                                     
-                                    <div class="col">
-                                        <input class="form-control form-control-lg form-control-borderless" type="search" name="title" placeholder="Search topics or keywords">
-                                    </div>
-                                    &nbsp;
-                                    <div class="col-auto">
-                                        <button class="btn btn-lg btn-primary" type="submit">Search</button>
-                                    </div>        
-                            </form>
-                        </div>
-                       
-                    </div>
+                                    </select>
+    </div>
+    &nbsp;&nbsp;
+    <div class="col-md-6">
+    
+    <select  id="model" name="model" class="form-control" placeholder="Select model">
+    <option value="">-- Select model --</option></select>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="col-xs-4">
+    <input type="number"  class="form-control" placeholder="Min Price">
+    
+          <input type="number"  class="form-control" placeholder="Max Price">
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="col-xs-4">
+    <input type="number"  class="form-control" placeholder="From year">
+    
+          <input type="number"  class="form-control" placeholder="To Year">
+    </div>
+    &nbsp;&nbsp; &nbsp;&nbsp;
+    <div class="col-xs-4" class="form-control">
+
+                            <select name="fuel" id="fuel" class="form-control">
+                                <option value="0">Fuel Type</option>
+                                <option value="petrol">Petrol</option>
+                                <option value="diesel">Diesel</option>
+                                <option value="electric">Electric</option>
+                                <option value="hybrid">Hybrid</option>
+                                <option value="lpg">Lpg</option>
+                                </select>
+                           
+                            </div>
+                       <br><br><br>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-primary btn-block">Search</button>
+    </div>
 
 
-<br><br><br><br><br><br><br>
+  </form>
+</div>
 
 
+
+<br><br>
+
+
+<br><br>
 
  @foreach ($results as $result)
 
@@ -53,5 +92,33 @@
   {{ $results->links() }}
 </div>
 </div>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="make"]').on('change', function() {
+            var makeID = $(this).find('option:selected').attr('id');
+            if(makeID) {
+                $.ajax({
+                    url: 'ajax/'+makeID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+
+                        
+                        $('select[name="model"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="model"]').append('<option value="'+ value.car_model +'">'+ value.car_model +'</option>');
+                        });
+
+
+                    }
+                });
+            }else{
+                $('select[name="model"]').empty();
+            }
+        });
+    });
+</script>
 
 @endsection

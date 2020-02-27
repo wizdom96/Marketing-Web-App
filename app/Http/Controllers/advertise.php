@@ -8,11 +8,20 @@ use Illuminate\Http\Request;
 class advertise extends Controller
 {
     public function index() {
+      $make = DB::table("cars")->pluck("car","id");
         $results = Postadd::where('approved', '=', 1)->paginate(4);
-        
-        return view('index',['results'=>$results]);
+        return view('index',['results'=>$results,'make'=>$make]);
         
      }
+
+     public function modelselect($id){
+      $model = DB::table("car_models")
+      ->where("car_id",$id)
+   
+      ->get();
+  
+      return $model;
+   }
 
 
      public function view_product($id){
