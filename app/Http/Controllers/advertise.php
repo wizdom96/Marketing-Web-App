@@ -9,7 +9,7 @@ class advertise extends Controller
 {
     public function index() {
       $make = DB::table("cars")->pluck("car","id");
-        $results = Postadd::where('approved', '=', 1)->paginate(4);
+        $results = Postadd::where('approved', '=', 1)->paginate(7);
         return view('index',['results'=>$results,'make'=>$make]);
         
      }
@@ -22,6 +22,47 @@ class advertise extends Controller
   
       return $model;
    }
+
+   public function search(Request $request) {
+        
+      $make = DB::table("cars")->pluck("car","id");
+      $query = DB::table('content');
+
+      if($request)
+      $query->where('approved', '=', 1);
+
+
+      if($request->title)
+      $query->where('title', 'LIKE', '%' . $request->title . '%');
+   
+
+      if($request->make)
+      $query->where('make', '=', $request->make);
+
+      if($request->model)
+      $query->where('model', '=', $request->model);
+
+
+       if($request->minprice)
+      $query->where('price', '>', $request->minprice);
+   
+      if($request->maxprice)
+       $query->where('price', '<', $request->maxprice);
+   
+      if($request->fyear)
+      $query->where('year', '>', $request->fyear);
+
+      if($request->toyear)
+      $query->where('year', '<', $request->toyear);
+   
+      if($request->fuel)
+      $query->where('fuel', '=', $request->fuel);
+  
+   
+       $results = $query->paginate(7);
+        return view('index',['results'=>$results,'make'=>$make]);
+        
+     }
 
 
      public function view_product($id){

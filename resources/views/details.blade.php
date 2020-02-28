@@ -12,8 +12,8 @@
  @foreach ($results as $result)
  <div class="container">
  <div class="row">
-
-          <img  src="../uploads/content/{{$result->image}}" width="300px" height="125px" alt="">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 >{{ $result->title }} <br>
+ <?php foreach (json_decode($result->image) as $picture) {} ?>
+          <img  src="../uploads/content/<?php echo $picture ?>" width="300px" height="125px" alt="">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 >{{ $result->title }} <br>
           <p>{{ $result->price }} €</p>
         @if (($result->approved)==='1')
 
@@ -60,7 +60,7 @@
       <td>{{$user->name}}</td>
       <td>{{$user->email}}</td>
       <td>{{$user->mobile}}</td>
-      <td><a href="{{ url('dashboard/allusers/delete')}}/{{$user->id}}" class="btn-primary btn-sm" onclick="return confirm('Are you sure you want to delete this user?');">Delete USER</a></h4></td>
+      <td><a href="{{ url('dashboard/allusers/delete')}}/{{$user->id}}" class="btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?');">Delete USER</a></h4></td>
     </tr>
     <tr>
  

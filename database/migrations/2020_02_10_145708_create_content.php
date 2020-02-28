@@ -22,14 +22,14 @@ class CreateContent extends Migration
             $table->string('phone');
             $table->string('year');
             $table->string('city');
-            $table->string('price');
+            $table->integer('price');
             $table->string('power');
             $table->string('transmission');
             $table->string('fuel');
             $table->string('km');
             $table->string('type');
             $table->string('image')->nullable();
-            $table->string('approved')->default('0');
+            $table->integer('approved')->default(0);
             $table->string('user_id');
             $table->rememberToken();
             $table->timestamps();

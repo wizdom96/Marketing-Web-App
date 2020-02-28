@@ -73,6 +73,9 @@ Route::get('post-content', function () {
   Route::get('/', array('as'=>'index','uses'=>'advertise@index')); 
   Route::get('/ajax/{id}','advertise@modelselect');
 
+  Route::post('/search', array('as'=>'search','uses'=>'advertise@search'));
+  Route::get('/search', array('as'=>'search','uses'=>'advertise@search'));
+
   Route::get('product/{id}','advertise@view_product');
   
 

@@ -4,11 +4,11 @@
 
 
 <div class="row justify-content-center">
-  <form action="" class="form-inline row" name="myform" method="GET" >
+  <form action="{{ ('search') }}" class="form-inline row" name="myform" method="POST" >
 
   {{csrf_field()}}
     <div class="col-xs-8" style="border:1px solid black">
-      <input type="search" class="form-control" id="search" placeholder="Search by title">
+      <input  id="title" class="form-control" name="title" placeholder="Search by title">
     </div>
     &nbsp;&nbsp;
     <div class="col-xs-8">
@@ -29,22 +29,22 @@
     </div>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <div class="col-xs-4">
-    <input type="number"  class="form-control" placeholder="Min Price">
+    <input type="number"  name="minprice" id="minprice" class="form-control" step="100" placeholder="min price">
     
-          <input type="number"  class="form-control" placeholder="Max Price">
+          <input type="number"  name="maxprice" id="maxprice"  class="form-control" step="100" placeholder="max price">
     </div>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
     <div class="col-xs-4">
-    <input type="number"  class="form-control" placeholder="From year">
+    <input type="number" name="fyear" id="fyear" class="form-control" placeholder="from year">
     
-          <input type="number"  class="form-control" placeholder="To Year">
+          <input type="toyear" name="toyear" id="toyear" class="form-control" placeholder="to year">
     </div>
     &nbsp;&nbsp; &nbsp;&nbsp;
     <div class="col-xs-4" class="form-control">
 
                             <select name="fuel" id="fuel" class="form-control">
-                                <option value="0">Fuel Type</option>
+                                <option value="0">fuel type</option>
                                 <option value="petrol">Petrol</option>
                                 <option value="diesel">Diesel</option>
                                 <option value="electric">Electric</option>
@@ -55,7 +55,7 @@
                             </div>
                        <br><br><br>
     <div class="col-md-3">
-      <button type="button" class="btn btn-primary btn-block">Search</button>
+      <button type="submit" class="btn btn-primary btn-block">Search</button>
     </div>
 
 
@@ -87,12 +87,13 @@
  
  
   @endforeach
-  <div class="container">
- <div class="row">
-  {{ $results->links() }}
-</div>
-</div>
 
+        <div class="container">
+            <div class="row">
+             {{ $results->links() }}
+        </div>
+    </div>
+ 
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -104,14 +105,11 @@
                     type: "GET",
                     dataType: "json",
                     success:function(data) {
-
                         
                         $('select[name="model"]').empty();
                         $.each(data, function(key, value) {
                             $('select[name="model"]').append('<option value="'+ value.car_model +'">'+ value.car_model +'</option>');
                         });
-
-
                     }
                 });
             }else{

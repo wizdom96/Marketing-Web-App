@@ -1,0 +1,9 @@
+
+  Dealership website. 
+
+  You need to clone the project and then install the composer and the npn files.
+  You change env.example into .env and you add your configuraions for the db and create.
+  after u migrate everything you make  php artisan db:seed  into terminal to make the admin profile.
+
+  Start the website localy an you can then add users, ads you can approve ads delete edit and more... 
+

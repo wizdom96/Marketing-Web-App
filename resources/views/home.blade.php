@@ -41,7 +41,8 @@
           <img  src="uploads/content/<?php echo $picture ?>" width="300px" height="125px" alt="">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4><b>{{ $result->title }}<br></b> <br>
           <p>{{ $result->description }} €</p>
           <p>{{ $result->price }} €</p>
-          <a href="{{ url('approvead') }}/{{$result->id}}" class="btn-primary btn-sm" onclick="return confirm('Are you sure you want to approve this ?');">Approve</a></h4>
+          <a href="{{ url('approvead') }}/{{$result->id}}" class="btn-primary btn-sm" onclick="return confirm('Are you sure you want to approve this ?');">Approve</a>
+          <a href="{{ url('deletead') }}/{{$result->id}}" class="btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">DELETE</a></h4>
         </div>
         <br>
     </div>
