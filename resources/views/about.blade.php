@@ -11,5 +11,6 @@
         <a class="btn btn-primary btn-lg" href="contact">Contact us</a>
       </div>
 </div>
-
+<br><br><br>
+<br><br>
       @endsection

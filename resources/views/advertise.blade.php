@@ -15,7 +15,9 @@ After you sign up with EZ Texting, we supply you with tools, such as website “
 
 <a class="btn btn-primary btn-lg" href="login">LOG IN</a>&nbsp OR &nbsp <a class="btn btn-primary btn-lg" href="register">REGISTER</a>
 <br><br><br>
-
+<br><br><br>
+<br><br><br>
+<br><br><br>
 
 </html>
 @endsection

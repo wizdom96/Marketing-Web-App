@@ -16,9 +16,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@test.com',
             'city' =>'DC',
             'mobile' => '+1584 158 1156',
-            'password' => '$2y$10$9YhxZ4yG0/fRkOktQlLtU.OlXu1/aZ5iovGeGlnKCWNUqlITNdOQ2',
+            'password' => Hash::make('password'),
             'permission' => '1',
 
         ]);
+
     }
 }

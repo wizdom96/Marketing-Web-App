@@ -35,12 +35,17 @@
             <a class="nav-link" href="about">About
         </a>
           </li>
-
-              
+          @auth  
+          <li class="{{Request::path() === 'dashboard' ? 'nav-item active' : ''}}">
+            <a class="nav-link" href="dashboard">
+            Profile</a>
+          </li>
+              @else
           <li class="{{Request::path() === 'advertise' ? 'nav-item active' : ''}}">
             <a class="nav-link" href="advertise">
             Advertise</a>
           </li>
+          @endauth
           <li class="{{Request::path() === 'contact' ? 'nav-item active' : ''}}">
             <a class="nav-link" href="contact">Contact
         </a>
