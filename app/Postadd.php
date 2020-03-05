@@ -10,4 +10,6 @@ class Postadd extends Model
     protected $fillable = [
         'make', 'model', 'title', 'description', 'phone', 'year', 'city', 'price', 'transmission', 'fuel', 'km', 'type', 'image', 
     ];
+
+    
 }

@@ -13,8 +13,7 @@
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="css/business-frontpage.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
@@ -71,6 +70,7 @@
 
     <div class="container">
     @yield('index')
+    @yield ('product')
     @yield('about')
     @yield ('advertise')
     @yield ('addpost')

@@ -1,7 +1,5 @@
 @extends('layout')
 @section ('index')
-    
-
 
 <div class="row justify-content-center">
   <form action="{{ ('search') }}" class="form-inline row" name="myform" method="POST" >
@@ -10,7 +8,7 @@
     <div class="col-xs-8" style="border:1px solid black">
       <input  id="title" class="form-control" name="title" placeholder="Search by title">
     </div>
-    &nbsp;&nbsp;
+   
     <div class="col-xs-8">
     <select  id="make" name="make" class="form-control" placeholde="Select make">
                                 <option value="">-- Select make --</option>
@@ -21,26 +19,24 @@
                                     
                                     </select>
     </div>
-    &nbsp;&nbsp;
+   
     <div class="col-md-6">
     
     <select  id="model" name="model" class="form-control" placeholder="Select model">
     <option value="">-- Select model --</option></select>
     </div>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <div class="col-xs-4">
     <input type="number"  name="minprice" id="minprice" class="form-control" step="100" placeholder="min price">
     
           <input type="number"  name="maxprice" id="maxprice"  class="form-control" step="100" placeholder="max price">
     </div>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+  
     <div class="col-xs-4">
-    <input type="number" name="fyear" id="fyear" class="form-control" placeholder="from year">
+    <input type="number" name="fyear" id="fyear" class="form-control" placeholder="from year" style="padding:5px">
     
           <input type="toyear" name="toyear" id="toyear" class="form-control" placeholder="to year">
     </div>
-    &nbsp;&nbsp; &nbsp;&nbsp;
+   
     <div class="col-xs-4" class="form-control">
 
                             <select name="fuel" id="fuel" class="form-control">
@@ -68,21 +64,26 @@
 
 
 <br><br>
-
+</div>
  @foreach ($results as $result)
 
  <div class="container">
- <div class="row">
- <?php foreach (json_decode($result->image) as $picture) {}  ?>
+    <div class="row1">
 
-          <img  src="uploads/content/<?php echo $picture ?>" width="300px" height="125px" alt="">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 >{{ $result->title }} <br>
-          <p>{{ $result->price }} €</p>
-          <a href="product/{{$result->id}}" class="btn-primary btn-sm" >Find Out More!</a></h4>
+                <?php foreach (json_decode($result->image) as $picture) {}  ?>   
+                <div class="img-container">
+                        <img class="small-img"  src="uploads/content/<?php echo $picture ?>"  alt="car-image"> 
+                </div>
+                    
+          
+          <h4 class="pad" >{{ $result->title }} <br> 
+          <p class="pad">{{ $result->price }} €</p>
+          <a href="product/{{$result->id}}" class="btn-primary btn-lg" >Find Out More!</a></h4>
         </div>
         <br>
     </div>
   </div>
-  <br><br>  
+
  
  
  

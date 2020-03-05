@@ -27,6 +27,7 @@
         </div>
     </div>
 </div>
+
 <br><br><br><br><br><br><br>
 @endif
 @if     (collect(request()->segments())->last()==='makemodel')
