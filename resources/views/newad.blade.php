@@ -74,7 +74,7 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control " name="phone" required >
+                                <input id="phone" class="form-control" type="text" class="form-control " name="phone" required >
 
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -92,7 +92,7 @@
                             <label for="year" class="col-md-4 col-form-label text-md-right">{{ __('Year') }}</label>
 
                             <div class="col-md-6">
-                            <select name="year" id="year">
+                            <select name="year" id="year" class="form-control">
                                 <option value="0">Select Year</option>
                                 <option value="2020">2020</option>
                                 <option value="2019">2019</option>
@@ -144,7 +144,7 @@
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="text"  name="city" required>
+                                <input id="city" class="form-control" type="text"  name="city" required>
 
                                 @error('city')
                                     <span class="invalid-feedback" role="alert">
@@ -159,7 +159,7 @@
                             <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price $') }}</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="number"  name="price" required>
+                                <input id="price" type="number"  name="price" class="form-control" required>
 
                                 @error('price')
                                     <span class="invalid-feedback" role="alert">
@@ -174,7 +174,7 @@
                             <label for="power" class="col-md-4 col-form-label text-md-right">{{ __('Power (kw)') }}</label>
 
                             <div class="col-md-6">
-                                <input id="power" type="text"  name="power" required>
+                                <input id="power" type="text"  name="power" class="form-control" required>
 
                                 @error('power')
                                     <span class="invalid-feedback" role="alert">
@@ -189,7 +189,7 @@
                             <label for="transmission" class="col-md-4 col-form-label text-md-right">{{ __('Transmission') }}</label>
 
                             <div class="col-md-6">
-                                <select name="transmission" id="transmission">
+                                <select name="transmission" id="transmission" class="form-control">
                                 <option value="0">Select transmission</option>
                                 <option value="automatic">Automatic</option>
                                 <option value="manual">Manual</option>
@@ -203,7 +203,7 @@
                             <label for="fuel" class="col-md-4 col-form-label text-md-right">{{ __('Fuel') }}</label>
 
                             <div class="col-md-6">
-                            <select name="fuel" id="fuel">
+                            <select name="fuel" id="fuel" class="form-control">
                                 <option value="0">Fuel Type</option>
                                 <option value="petrol">Petrol</option>
                                 <option value="diesel">Diesel</option>
@@ -219,7 +219,7 @@
                             <label for="km" class="col-md-4 col-form-label text-md-right">{{ __('Kilometer') }}</label>
 
                             <div class="col-md-6">
-                                <input id="km" type="text"  name="km" required>
+                                <input id="km" type="text"  name="km" class="form-control" required>
 
                                 @error('km')
                                     <span class="invalid-feedback" role="alert">
@@ -234,7 +234,7 @@
                             <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Type') }}</label>
 
                             <div class="col-md-6">
-                            <select name="type" id="type">
+                            <select name="type" id="type" class="form-control">
                                 <option value="0">Select Vehicle Type</option>
                                 <option value="hatchback">Hatchback</option>
                                 <option value="sedan">Sedan</option>
@@ -247,34 +247,42 @@
                             </div>
                         </div>
 
+                       
                         <div class="form-group row">
-                            <label for="Images" class="col-md-4 col-form-label text-md-right">{{ __('Images') }}</label>
+                            <label for="filename[]" class="col-md-4 col-form-label text-md-right">{{ __('Upload images') }}</label>
 
                             <div class="col-md input-group control-group increment" >
                                     <input type="file" name="filename[]" class="form-control">
                                     <div class="input-group-btn"> 
-                                    <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                                        <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                                    </div>                               
                             </div>
                         </div>
-                        </div>
-                        <div class="form-group row">
-                          <div class="col-md clone hide">
-                             <div class="control-group input-group" >
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             
-                             <input type="file" name="filename[]" class="form-control">
-                            <div class="input-group-btn"> 
-                          <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-                     </div>
-                 </div>
-               </div>
-</div>
-                        <input id="invisible_id" name="invisible" type="hidden" value="{{((Auth()->user()->id))}}">
 
+
+                        <div class="form-group row">
+                                <div class="col-md clone hide">
+                                  <div class="control-group input-group" >
+                                           <label for="filename[]" class="col-md-4 col-form-label text-md-right" style="margin-left:15px"></label>
+                                          <input type="file" name="filename[]" class="form-control" >
+                                          <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>              
+                                </div>
+                          </div>
+                    </div>
+
+            <div class="form-group row">
+                            <label for="sponsored" class="col-md-4 col-form-label text-md-right">{{ __('Do you want your ad to be sponsored?') }}</label>
+
+                            <div class="col-md-6">
+                            <select name="sponsored" id="sponsored" class="form-control-sm" require>
+                                <option value="0">no</option>
+                                <option value="9">yes</option>
+
+                            </div>
+                        </div>
+                        
+                        <input id="invisible_id" name="invisible" type="hidden" value="{{((Auth()->user()->id))}}">
+<br><br><br>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <input type="submit"  class="btn btn-primary">

@@ -11,24 +11,48 @@
          <br><br><br>
  @foreach ($results as $result)
  <div class="container">
- <div class="row">
- <?php foreach (json_decode($result->image) as $picture) {} ?>
-          <img  src="../uploads/content/<?php echo $picture ?>" width="300px" height="125px" alt="">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 >{{ $result->title }} <br>
-          <p>{{ $result->price }} €</p>
-        @if (($result->approved)==='1')
-
-            <span style="color:green">APPROVED</span>
-
-        @else
-
-        <span style="color:red">NOT APPROVED</span>
-
-
-            @endif
-            <br>
-          <a href="{{ url('deletead') }}/{{$result->id}}" class="btn-primary btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">DELETE</a></h4>
+            <div class="row1">
+                <?php 
+                        json_decode($result->image);
+                        $x = explode('"', $result->image);
+                ?> 
+               <div class="img-container">
+               
+                        <img class="small-img"  src="../uploads/content/<?php echo $x[1]; ?>"  alt="car-image"> 
+                       </div><h4 class="pad" >{{ $result->title }} <br>
+                       
+                 <p >{{ $result->price }} €</p>
+       
+            
+                    <a href="{{ url('deletead') }}/{{$result->id}}" class="btn-primary btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">DELETE</a>
+         
+                 @if (($result->sponsored) === 1)
+                    <a href="{{ url('unsponsored') }}/{{$result->id}}" class="btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">Unsponsore this!</a>
+                    @elseif((($result->sponsored) === 0) && (($result->approved) === 1))
+                    <a href="{{ url('sponsored') }}/{{$result->id}}" class="btn-warning btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">Sponsore this!</a>
+                     @endif
+                     <br><br>
+                @switch($result->sponsored)
+                  @case(9)
+                     <p style="font-size:14px;">Sponsorship status:<span style="color:blue"> Waiting for admin to approve sponsorship.</span></p>
+                     @break
+                  @case(0)
+                     <p style="font-size:14px;">Sponsorship status:<span style="color:red"> Not sponsored.</span></p>
+                 @break
+                @case(1)
+                     <p style="font-size:14px;">Sponsorship status:<span style="color:green"> Sponsored.</span></p>
+                     @break
+                
+                @endswitch
+    </h4>
         </div>
-        <br>
+        @if (($result->approved) === 1)
+                            <p style="font-size:20px;">Status:<span style="color:green"> APPROVED</span></p>
+                    @else
+                    <p style="font-size:20px;">Status:<span style="color:red"> NOT APPROVED</span></p> 
+                    @endif
+                    
+                    
     </div>
   </div>
   <br><br>  

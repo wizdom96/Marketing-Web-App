@@ -88,5 +88,10 @@ Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/approvead/{id}','HomeController@approvead')->name('approve');
 Route::get('/deletead/{id}','HomeController@deletead')->name('delete');
+Route::get('/sponsored/{id}','HomeController@sponsored')->name('sponosored');
+Route::get('/unsponsored/{id}','HomeController@unsponsored')->name('unsponsored');
 Route::get('/dashboard/allusers/delete/{id}','HomeController@deleteuser')->name('delete');
+
+Route::get('/approvespon/{id}','HomeController@approvespon');
+Route::get('/deletespon/{id}','HomeController@deletespon');
 

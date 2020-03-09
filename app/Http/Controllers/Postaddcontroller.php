@@ -44,6 +44,7 @@ class Postaddcontroller extends Controller
         $content->power = $request->input('power');
         $content->type = $request->input('type');
         $content->user_id = $request->input('invisible');
+        $content->sponsored = $request->input('sponsored');
         if ($request->hasfile('filename')){
 
             foreach($request->file('filename') as $image)

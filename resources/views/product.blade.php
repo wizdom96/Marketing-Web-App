@@ -4,26 +4,20 @@
  
 @foreach($res->first() as $r) 
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<div class="container">
 
-  <!-- Portfolio Item Heading -->
-  <h1 class="my-4">{{$r->title}}
-    
-  </h1>
+      <h1 class="my-4">{{$r->title}}  </h1>
+          <div class="row">
 
-  <!-- Portfolio Item Row -->
-  <div class="row">
-<div class="w3-content w3-display-container">
-<?php foreach (json_decode($r->image) as $picture) { ?>
+          <button class="btnnp" onclick="plusDivs(-1)">&#10094;</button>
+                    <div class="product-img-container" >
+                      
+              <?php foreach (json_decode($r->image) as $picture) { ?>
+                <img  src="..\uploads\content\<?php echo $picture ?>" class="mySlides" alt="product-image" >
+              <?php } ?>
 
-  <img class="mySlides" src="..\uploads\content\<?php echo $picture ?>" style="width:700px; height:400px" >
-<?php } ?>
+        </div>
 
-  <button class="btn-primary btn-sm" onclick="plusDivs(-1)">&#10094;</button>
-  <button class="btn-primary btn-sm" onclick="plusDivs(1)">&#10095;</button>
-</div>
-         
+                <button type="submit" class="btnnp" onclick="plusDivs(1)">&#10095;</button>
     <div class="col-md-4">
       <h3 class="my-3">Advertise description</h3>
       <p>{{$r->description}}</p>
@@ -44,13 +38,7 @@
     </div>
     @endforeach
   </div>
-  <!-- /.row -->
 
-  <!-- Related Projects Row -->
-
-
-
-</div>
 <br><br><br>
 
 

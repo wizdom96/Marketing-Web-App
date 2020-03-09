@@ -26,7 +26,8 @@ class HomeController extends Controller
     {
 
         $results = \DB::select('select * from content where approved=0');
-        return view('home',['results'=>$results]);
+        $resultss = \DB::select('select * from content where sponsored= 9 ');
+        return view('home',['results'=>$results],['resultss'=>$resultss]);
         
     }
 
@@ -35,10 +36,31 @@ class HomeController extends Controller
             return back();
        }
 
+       public function sponsored($id){
+        \DB::table('content')->where('id', $id)->update(array('sponsored' => '9'));
+            return back();
+       }
+       public function unsponsored($id){
+        \DB::table('content')->where('id', $id)->update(array('sponsored' => '0'));
+            return back();
+       }
+
        public function deletead($id){
         \DB::table('content')->where('id', $id)->delete();
             return back();
        }
+
+       public function approvespon($id){
+        \DB::table('content')->where('id', $id)->update(array('sponsored' => '1'));
+            return back();
+       }
+
+       public function deletespon($id){
+        \DB::table('content')->where('id', $id)->update(array('sponsored' => '0'));
+            return back();
+       }
+
+
        public function deleteuser($id){
         \DB::table('users')->where('id', $id)->delete();
             return back();

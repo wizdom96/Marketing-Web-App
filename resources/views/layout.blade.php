@@ -11,9 +11,8 @@
   <title>Cars sell | Best cars dealer website</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <link href="css/style.css" rel="stylesheet">
+<link href="{{asset ('css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>

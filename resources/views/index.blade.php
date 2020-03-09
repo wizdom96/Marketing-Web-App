@@ -5,11 +5,11 @@
   <form action="{{ ('search') }}" class="form-inline row" name="myform" method="POST" >
 
   {{csrf_field()}}
-    <div class="col-xs-8" style="border:1px solid black">
+    <div class="col-xs-8" style="padding:10px">
       <input  id="title" class="form-control" name="title" placeholder="Search by title">
     </div>
    
-    <div class="col-xs-8">
+    <div class="col-xs-8" style="padding:10px">
     <select  id="make" name="make" class="form-control" placeholde="Select make">
                                 <option value="">-- Select make --</option>
                                 @foreach ($make as $key => $value)
@@ -20,24 +20,22 @@
                                     </select>
     </div>
    
-    <div class="col-md-6">
+    <div class="col-md-6" style="padding:10px">
     
-    <select  id="model" name="model" class="form-control" placeholder="Select model">
+     <select  id="model" name="model" class="form-control" placeholder="Select model">
     <option value="">-- Select model --</option></select>
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-4"  style="padding:10px">
     <input type="number"  name="minprice" id="minprice" class="form-control" step="100" placeholder="min price">
-    
-          <input type="number"  name="maxprice" id="maxprice"  class="form-control" step="100" placeholder="max price">
+    <input type="number"  name="maxprice" id="maxprice"  class="form-control" step="100" placeholder="max price">
     </div>
   
-    <div class="col-xs-4">
-    <input type="number" name="fyear" id="fyear" class="form-control" placeholder="from year" style="padding:5px">
-    
-          <input type="toyear" name="toyear" id="toyear" class="form-control" placeholder="to year">
+    <div class="col-xs-4"  style="padding-right:20px">
+    <input type="number" min="1900" max="2099" step="1" name="fyear" id="fyear" class="form-control" placeholder="f. year" >
+    <input type="number" min="1900" max="2099" step="1" name="toyear" id="toyear" class="form-control" placeholder="t. year">
     </div>
    
-    <div class="col-xs-4" class="form-control">
+    <div class="col-xs-4  style="padding:10px" class="form-control">
 
                             <select name="fuel" id="fuel" class="form-control">
                                 <option value="0">fuel type</option>
@@ -50,6 +48,7 @@
                            
                             </div>
                        <br><br><br>
+</div>
     <div class="col-md-3">
       <button type="submit" class="btn btn-primary btn-block">Search</button>
     </div>
@@ -65,17 +64,45 @@
 
 <br><br>
 </div>
- @foreach ($results as $result)
+@foreach ($results as $result)
 
+@if (($result->sponsored) === 1)
+<div class="container">
+   <div class="row1">
+                 
+               <?php 
+                       json_decode($result->image);
+                       $x = explode('"', $result->image);
+               ?>   
+
+               <div class="img-container">
+                       <img class="small-img"  src="uploads/content/<?php echo $x[1]; ?>"  alt="car-image"> 
+               </div>
+         <h4 class="pad" >{{ $result->title }} <br> 
+         <p class="pad">{{ $result->price }} €</p>
+         <a href="product/{{$result->id}}" class="btn-primary btn-lg" >Find Out More!</a></h4>
+         <div class="sponsored" style="background-color:yellow;height:30%;border:1px solid black;border-radius:25px;padding:5px">
+         Sponsored
+        </div>
+       </div>
+       <br>
+   </div>
+ </div>
+    @endif
+ @endforeach
+ @foreach ($results as $result)
+ @if (($result->sponsored) === 0)
  <div class="container">
     <div class="row1">
+                  
+                <?php 
+                        json_decode($result->image);
+                        $x = explode('"', $result->image);
+                ?>   
 
-                <?php foreach (json_decode($result->image) as $picture) {}  ?>   
                 <div class="img-container">
-                        <img class="small-img"  src="uploads/content/<?php echo $picture ?>"  alt="car-image"> 
+                        <img class="small-img"  src="uploads/content/<?php echo $x[1]; ?>"  alt="car-image"> 
                 </div>
-                    
-          
           <h4 class="pad" >{{ $result->title }} <br> 
           <p class="pad">{{ $result->price }} €</p>
           <a href="product/{{$result->id}}" class="btn-primary btn-lg" >Find Out More!</a></h4>
@@ -83,12 +110,9 @@
         <br>
     </div>
   </div>
-
- 
- 
- 
+@endif
   @endforeach
-
+  
         <div class="container">
             <div class="row">
              {{ $results->links() }}

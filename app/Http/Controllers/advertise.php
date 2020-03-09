@@ -9,7 +9,7 @@ class advertise extends Controller
 {
     public function index() {
       $make = DB::table("cars")->pluck("car","id");
-        $results = Postadd::where('approved', '=', 1)->paginate(7);
+        $results = Postadd::where('approved', '=', 1)->paginate(5);
         return view('index',['results'=>$results,'make'=>$make]);
         
      }
@@ -80,7 +80,7 @@ class advertise extends Controller
    }
 
    public function createmake(request $request) {
-      $name = $request->   input('name');
+      $name = $request->input('name');
       \DB::insert('insert into cars (car) values(?)',[$name]);
      
       return  redirect()->back()->with("success","Record added successfully !");
@@ -95,7 +95,7 @@ class advertise extends Controller
    $model = $request->input('model');
 
    \DB::table('car_models')->insert(
-      ['car_model' => $name, 'car_id' => $i]
+      ['car_model' => $model, 'car_id' => $i]
   );
   
    return  redirect()->back()->with("success","Record added successfully !");
