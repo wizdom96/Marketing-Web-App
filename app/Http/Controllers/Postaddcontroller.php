@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Postadd;
 use Illuminate\Http\Request;
 use DB;
+use App\ImagesUpload;
 
 class Postaddcontroller extends Controller
 {
@@ -45,25 +46,29 @@ class Postaddcontroller extends Controller
         $content->type = $request->input('type');
         $content->user_id = $request->input('invisible');
         $content->sponsored = $request->input('sponsored');
-        if ($request->hasfile('filename')){
+        $content->save();
 
-            foreach($request->file('filename') as $image)
 
-            {
-                $name=$image->getClientOriginalName();
-                $image->move('uploads/content/', $name);
-                $data[] = $name;
+        $images       =       array();
+        if($files     =       $request->file('images')) {
+            foreach($files as $file) {
+                $name     =    rand(1,9999).'.'.$file->getClientOriginalExtension();
+
+                $destinationPath = public_path('/uploads/content');
+
+                if($file->move($destinationPath, $name)) {
+
+                    $images[]   =   $name;
+                   
+                    $saveResult   =   ImagesUpload::create(['image_name' => $name, 'content_id'=> $content->id]);
+                }
+
             }
-        }
-            else {
-            
-                return $request;
-                $highlights->image = '';
-            
+
+
+
         }
 
-            $content->image = json_encode($data);
-            $content->save();
             return back();
     }
 }

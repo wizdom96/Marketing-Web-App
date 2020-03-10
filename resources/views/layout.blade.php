@@ -10,6 +10,7 @@
 
   <title>Cars sell | Best cars dealer website</title>
 
+  
   <!-- Bootstrap core CSS -->
 <link href="{{asset ('css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
@@ -19,6 +20,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="http://localhost/Laravel/public/">Best car dealership web</a>
+  
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -30,23 +32,37 @@
             </a>
           </li>
           <li class="{{Request::path() === 'about' ? 'nav-item active' : ''}}">
-            <a class="nav-link" href="about">About
-        </a>
+
+          @if(request()->segment(1) == 'product')
+          <a class="nav-link" href="../about">About</a>
+          @else
+            <a class="nav-link" href="about">About</a>
+        @endif
           </li>
           @auth  
           <li class="{{Request::path() === 'dashboard' ? 'nav-item active' : ''}}">
-            <a class="nav-link" href="dashboard">
-            Profile</a>
+          @if(request()->segment(1) == 'product')
+            <a class="nav-link" href="../dashboard">Profile</a>
+            @else
+            <a class="nav-link" href="dashboard">Profile</a>
+        @endif
           </li>
               @else
           <li class="{{Request::path() === 'advertise' ? 'nav-item active' : ''}}">
-            <a class="nav-link" href="advertise">
-            Advertise</a>
+          @if(request()->segment(1) == 'product')
+            <a class="nav-link" href="../advertise">Advertise</a>
+            @else
+            <a class="nav-link" href="advertise">Advertise </a>
+            @endif
+           
           </li>
           @endauth
           <li class="{{Request::path() === 'contact' ? 'nav-item active' : ''}}">
-            <a class="nav-link" href="contact">Contact
-        </a>
+          @if(request()->segment(1) == 'product')
+            <a class="nav-link" href="../contact">Contact</a>
+            @else
+            <a class="nav-link" href="contact">Contact</a>
+            @endif
           </li>
         </ul>
       </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use DB;
+use App\ImagesUpload;
 use Illuminate\Http\Request;
 
 
@@ -26,8 +27,9 @@ class HomeController extends Controller
     {
 
         $results = \DB::select('select * from content where approved=0');
-        $resultss = \DB::select('select * from content where sponsored= 9 ');
-        return view('home',['results'=>$results],['resultss'=>$resultss]);
+        $resultss = \DB::select('select * from content where sponsored= 0 ');
+        $img =ImagesUpload::all();
+        return view('home',['results'=>$results, 'img'=>$img],['resultss'=>$resultss]);
         
     }
 
@@ -37,11 +39,11 @@ class HomeController extends Controller
        }
 
        public function sponsored($id){
-        \DB::table('content')->where('id', $id)->update(array('sponsored' => '9'));
+        \DB::table('content')->where('id', $id)->update(array('sponsored' => '0'));
             return back();
        }
        public function unsponsored($id){
-        \DB::table('content')->where('id', $id)->update(array('sponsored' => '0'));
+        \DB::table('content')->where('id', $id)->update(array('sponsored' => '1'));
             return back();
        }
 
@@ -51,12 +53,12 @@ class HomeController extends Controller
        }
 
        public function approvespon($id){
-        \DB::table('content')->where('id', $id)->update(array('sponsored' => '1'));
+        \DB::table('content')->where('id', $id)->update(array('sponsored' => '3'));
             return back();
        }
 
        public function deletespon($id){
-        \DB::table('content')->where('id', $id)->update(array('sponsored' => '0'));
+        \DB::table('content')->where('id', $id)->update(array('sponsored' => '1'));
             return back();
        }
 

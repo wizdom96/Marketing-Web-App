@@ -247,36 +247,21 @@
                             </div>
                         </div>
 
-                       
                         <div class="form-group row">
-                            <label for="filename[]" class="col-md-4 col-form-label text-md-right">{{ __('Upload images') }}</label>
-
-                            <div class="col-md input-group control-group increment" >
-                                    <input type="file" name="filename[]" class="form-control">
-                                    <div class="input-group-btn"> 
-                                        <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
-                                    </div>                               
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row">
-                                <div class="col-md clone hide">
-                                  <div class="control-group input-group" >
-                                           <label for="filename[]" class="col-md-4 col-form-label text-md-right" style="margin-left:15px"></label>
-                                          <input type="file" name="filename[]" class="form-control" >
-                                          <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>              
+                        <label for="images" class="col-md-4 col-form-label text-md-right"> Images </label>
+                                <div class="form-group">
+                                @csrf
+                                    <input type="file" name="images[]" class="form-control" id="images" accept="image/*" multiple/>
                                 </div>
-                          </div>
-                    </div>
+                        </div>
 
             <div class="form-group row">
                             <label for="sponsored" class="col-md-4 col-form-label text-md-right">{{ __('Do you want your ad to be sponsored?') }}</label>
 
                             <div class="col-md-6">
                             <select name="sponsored" id="sponsored" class="form-control-sm" require>
-                                <option value="0">no</option>
-                                <option value="9">yes</option>
+                                <option value="1">no</option>
+                                <option value="0">yes</option>
 
                             </div>
                         </div>

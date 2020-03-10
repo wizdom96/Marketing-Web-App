@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             ContentTableSeeder::class,
             MakeModelTableSeeder::class,
+            ImagesTableSeeder::class,
         ]);
     }
 }

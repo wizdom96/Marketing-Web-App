@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-@if ((Auth()->user()->permission) === '1' )
+@if ((Auth()->user()->permission) === 1 )
 <div class="container">
     <div class="row justify-content-center">
     
@@ -41,16 +41,20 @@
  <div class="container">
  <div class="row1">
 
+          
+            @foreach ($img as $images)
+                    @if($images->content_id == $result->id)
+                      
+                <div class="img-container">
+                        <img class="small-img"  src="./uploads/content/<?php echo $images->image_name; ?>"  alt="car-image"> 
+                </div>
+                @break
+                  @endif
+               @endforeach
 
-  
-  <?php 
-                        json_decode($result->image);
-                        $x = explode('"', $result->image);
-                ?> 
-               <div class="img-container">
-               
-                        <img class="small-img"  src="uploads/content/<?php echo $x[1]; ?>"  alt="car-image"> 
-                                </div><h4 class="pad" >{{ $result->title }} <br><br>
+              
+                 
+                    <h4 class="pad" >{{ $result->title }} <br><br>
                     <p style="font-size:10px">Description:{{ $result->description }} €</p>
                     <p class="padd">{{ $result->price }} €</p>
                     <a href="{{ url('approvead') }}/{{$result->id}}" class="btn-success btn-sm" onclick="return confirm('Are you sure you want to approve this ?');">Approve</a>
@@ -76,21 +80,23 @@
      </div>
      @else
  @foreach ($resultss as $res)
-
+        @if (($res->approved) === 1)
  <div class="container">
  <div class="row1">
-
-                <?php 
-                        json_decode($res->image);
-                        $x = explode('"', $res->image);
-                ?> 
-               <div class="img-container">
+ @foreach ($img as $images)
+                    @if($images->content_id == $result->id)
+                      
+                <div class="img-container">
+                        <img class="small-img"  src="./uploads/content/<?php echo $images->image_name; ?>"  alt="car-image"> 
+                </div>
+                @break
+                  @endif
+               @endforeach
                
-                        <img class="small-img"  src="uploads/content/<?php echo $x[1]; ?>"  alt="car-image"> 
-                                </div><h4 class="pad" >{{ $res->title }} <br><br>
+               <h4 class="pad" >{{ $res->title }} <br><br>
                     <p class="padd">{{ $res->price }} €</p>
-                    <a href="{{ url('approvead') }}/{{$res->id}}" class="btn-success btn-sm" onclick="return confirm('Are you sure you want to approve this ?');">Approve sponsorship</a>
-                    <a href="{{ url('deletead') }}/{{$res->id}}" class="btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">Deny sponsorship</a></h4>
+                    <a href="{{ url('approvespon') }}/{{$res->id}}" class="btn-warning btn-sm" onclick="return confirm('Are you sure you want to approve this ?');">Approve sponsorship</a>
+                    <a href="{{ url('deletespon') }}/{{$res->id}}" class="btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">Deny sponsorship</a></h4>
                     </div>
                    
      
@@ -98,12 +104,12 @@
     </div>
   </div>
   <br><br>  
-
-  @endforeach
-  @endif
+            @endif
+     @endforeach
+    @endif
 
 @endif
-@if ((Auth()->user()->permission) === '0' )
+@if ((Auth()->user()->permission) === 0 )
 <div class="container">
     <div class="row justify-content-center">
     

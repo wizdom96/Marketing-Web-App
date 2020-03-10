@@ -1,7 +1,7 @@
 
 @extends('layouts.app')
 @section ('details')
-@if ((Auth()->user()->permission) === '0' )
+@if ((Auth()->user()->permission) === 0 )
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <br><br><br>
@@ -12,34 +12,43 @@
  @foreach ($results as $result)
  <div class="container">
             <div class="row1">
-                <?php 
-                        json_decode($result->image);
-                        $x = explode('"', $result->image);
-                ?> 
-               <div class="img-container">
-               
-                        <img class="small-img"  src="../uploads/content/<?php echo $x[1]; ?>"  alt="car-image"> 
-                       </div><h4 class="pad" >{{ $result->title }} <br>
+
+
+                   
+              @foreach ($img as $images)
+                    @if($images->content_id == $result->id)
+                      
+                <div class="img-container">
+                        <img class="small-img"  src="../uploads/content/<?php echo $images->image_name; ?>"  alt="car-image"> 
+                </div>
+                @break
+                  @endif
+               @endforeach
+               <h4 class="pad" >{{ $result->title }} <br>
                        
                  <p >{{ $result->price }} €</p>
        
             
                     <a href="{{ url('deletead') }}/{{$result->id}}" class="btn-primary btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">DELETE</a>
-         
-                 @if (($result->sponsored) === 1)
+                    @switch($result->sponsored)
+                  @case(3)
+                 
                     <a href="{{ url('unsponsored') }}/{{$result->id}}" class="btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">Unsponsore this!</a>
-                    @elseif((($result->sponsored) === 0) && (($result->approved) === 1))
+                    @break
+                    @case(1)
                     <a href="{{ url('sponsored') }}/{{$result->id}}" class="btn-warning btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">Sponsore this!</a>
-                     @endif
+                    @break
+                     @endswitch
+                     
                      <br><br>
                 @switch($result->sponsored)
-                  @case(9)
+                  @case(0)
                      <p style="font-size:14px;">Sponsorship status:<span style="color:blue"> Waiting for admin to approve sponsorship.</span></p>
                      @break
-                  @case(0)
+                  @case(1)
                      <p style="font-size:14px;">Sponsorship status:<span style="color:red"> Not sponsored.</span></p>
                  @break
-                @case(1)
+                @case(3)
                      <p style="font-size:14px;">Sponsorship status:<span style="color:green"> Sponsored.</span></p>
                      @break
                 
@@ -48,7 +57,7 @@
         </div>
         @if (($result->approved) === 1)
                             <p style="font-size:20px;">Status:<span style="color:green"> APPROVED</span></p>
-                    @else
+                    @elseif (($result->approved) === 0)
                     <p style="font-size:20px;">Status:<span style="color:red"> NOT APPROVED</span></p> 
                     @endif
                     

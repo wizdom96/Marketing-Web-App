@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
                 'city'=>'Prilep',
                 'mobile'=>'075111222',
                 'password'=>Hash::make('password'),
-                'permission'=>'1'
+                'permission'=> 1
             ),
 
             array(
@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
                 'city'=>'Skopje',
                 'mobile'=>'075888999',
                 'password'=>Hash::make('password'),
-                'permission'=>'0'
+                'permission'=> 0
             )
 
             );

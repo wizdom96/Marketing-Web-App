@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator,Redirect,Response;
 Use App\User;
+Use App\ImagesUpload;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Session;
@@ -87,7 +88,8 @@ class AuthController extends Controller
     public function viewads($user_id){
 
         $results = \DB::table('content')->where('user_id', $user_id)->get();
-        return view('details',['results'=>$results]);
+        $img =ImagesUpload::all();
+        return view('details',['results'=>$results, 'img'=>$img]);
     }
 
     public function storeform(Request $request){

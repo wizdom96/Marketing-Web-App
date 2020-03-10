@@ -9,12 +9,13 @@
           <div class="row">
 
           <button class="btnnp" onclick="plusDivs(-1)">&#10094;</button>
-                    <div class="product-img-container" >
-                      
-              <?php foreach (json_decode($r->image) as $picture) { ?>
-                <img  src="..\uploads\content\<?php echo $picture ?>" class="mySlides" alt="product-image" >
-              <?php } ?>
-
+          <div class="product-img-container" >
+                   @foreach ($image as $img)                 
+                
+                        <img src="../uploads/content/<?php echo $img->image_name; ?>" class="mySlides" alt="product-image"> 
+               
+                @endforeach
+            
         </div>
 
                 <button type="submit" class="btnnp" onclick="plusDivs(1)">&#10095;</button>

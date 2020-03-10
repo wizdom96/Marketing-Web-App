@@ -28,9 +28,8 @@ class CreateContent extends Migration
             $table->string('fuel');
             $table->string('km');
             $table->string('type');
-            $table->string('image')->nullable();
             $table->integer('approved')->default(0);
-            $table->integer('sponsored')->default(0);
+            $table->integer('sponsored')->default(1);
             $table->string('user_id');
             $table->rememberToken();
             $table->timestamps();

@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 
 class advertise extends Controller
 {
-    public function index() {
+      
+   public function index() {
       $make = DB::table("cars")->pluck("car","id");
-        $results = Postadd::where('approved', '=', 1)->paginate(5);
-        return view('index',['results'=>$results,'make'=>$make]);
+      $results = Postadd::where('approved', '=', 1)->orderby('sponsored', 'desc')->paginate(7);
+         $images = DB::table("images_uploads")->get();
+        return view('index',['results'=>$results,'make'=>$make,'images'=>$images]);
         
      }
 
@@ -27,7 +29,7 @@ class advertise extends Controller
         
       $make = DB::table("cars")->pluck("car","id");
       $query = DB::table('content');
-
+      
       if($request)
       $query->where('approved', '=', 1);
 
@@ -59,7 +61,7 @@ class advertise extends Controller
       $query->where('fuel', '=', $request->fuel);
   
    
-       $results = $query->paginate(7);
+       $results = $query->orderby('sponsored', 'desc')->paginate(7);
         return view('index',['results'=>$results,'make'=>$make]);
         
      }
@@ -67,8 +69,12 @@ class advertise extends Controller
 
      public function view_product($id){
       
-      $res = \DB::table('content')->where('id', $id)->get()->groupBy('id');
-      return view('product',['res'=>$res]);
+
+         $image = \DB::table('images_uploads')->where('content_id', '=', $id)->get();
+         $res = \DB::table('content')->where('id', $id)->get()->groupBy('id');
+         return view('product',['res'=>$res, 'image'=>$image]);
+   
+
 
    }
 

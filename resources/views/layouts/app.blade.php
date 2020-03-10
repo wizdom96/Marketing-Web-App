@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>cars.mk</title>
 
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{asset ('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -23,7 +23,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    cars.mk
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -55,7 +55,7 @@
                                 <b> Home page</b><span class="caret"></span>
                                 </a>
                                 </li>
-                        @if ((Auth()->user()->permission) === '1' )
+                        @if ((Auth()->user()->permission) === 1 )
                         <li class="nav-item dropdown">
                                 <a id="navbar" class="nav-link" href="{{ url('dashboard/allusers') }}" style="color:#2B4FCA ;" >
                                 <b>View all users</b><span class="caret"></span>
@@ -69,11 +69,11 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{url('dashboard/make')}}" >
                                        
-                                        Make new car
+                                        New car make
                                     </a>
                                     <a class="dropdown-item" href="{{url('dashboard/makemodel')}}" >
                                        
-                                        Make new car model
+                                        New car model
                                     </a>
                                    
                             @else
@@ -83,7 +83,7 @@
                                 </a></li>
                                 <li class="nav-item dropdown">
                                 <a id="navbar" class="nav-link " href="{{ route('account', ['userId' => Auth::id()]) }}" style="color:#2B4FCA ;"  >
-                                <b>View active ads</b><span class="caret"></span>
+                                <b>Active ads</b><span class="caret"></span>
                                 </a></li>
 
 
