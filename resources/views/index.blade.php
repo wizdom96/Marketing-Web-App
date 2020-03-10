@@ -89,7 +89,7 @@
     <div class="row1">
                   
               @foreach ($images as $image)
-                    @if($image->content_id == $result->id)
+                    @if($image->content_id === $result->id)
                       
                 <div class="img-container">
                         <img class="small-img"  src="uploads/content/<?php echo $image->image_name; ?>"  alt="car-image"> 

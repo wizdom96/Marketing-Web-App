@@ -31,43 +31,42 @@
     <h1>UNAPRROPVED ADS</h1>
   </div>
 </div>
-@if (count($results) === 0)
-<div class="row justify-content-center">
-    <p style="font-size:25px;padding-top:20px;"> There isn't new ads.</p>   
-     </div>
-<br><br><br>
-@else 
- @foreach ($results as $result)
- <div class="container">
- <div class="row1">
 
-          
-            @foreach ($img as $images)
-                    @if($images->content_id == $result->id)
-                      
+@if (count($results) == 0)
+        <div class="row justify-content-center">
+                 <p style="font-size:25px;padding-top:20px;"> There isn't new ads.</p>   
+        </div>
+        <br><br><br>
+       
+            @else 
+ 
+ 
+        @foreach ($results as $result)
+            <div class="container">
+            <div class="row1">
+               @foreach ($img as $images)
+                    @if($images->content_id === $result->id)
+            
                 <div class="img-container">
                         <img class="small-img"  src="./uploads/content/<?php echo $images->image_name; ?>"  alt="car-image"> 
-                </div>
+                     </div>
                 @break
                   @endif
                @endforeach
 
-              
-                 
                     <h4 class="pad" >{{ $result->title }} <br><br>
                     <p style="font-size:10px">Description:{{ $result->description }} €</p>
                     <p class="padd">{{ $result->price }} €</p>
                     <a href="{{ url('approvead') }}/{{$result->id}}" class="btn-success btn-sm" onclick="return confirm('Are you sure you want to approve this ?');">Approve</a>
                     <a href="{{ url('deletead') }}/{{$result->id}}" class="btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">DELETE</a></h4>
-                    </div>
-        <br>
-    </div>
-  </div>
-  <br><br>  
-
-
+                            </div>
+                <br>
+            </div>
+        </div>
+        <br><br>  
   @endforeach
   @endif
+  <hr style="border:2px solid black">
   <div class="row justify-content-center">
     <h1>REQUESTING SPONSORING</h1>
   </div>
@@ -81,14 +80,14 @@
      @else
  @foreach ($resultss as $res)
         @if (($res->approved) === 1)
- <div class="container">
- <div class="row1">
- @foreach ($img as $images)
-                    @if($images->content_id == $result->id)
-                      
-                <div class="img-container">
-                        <img class="small-img"  src="./uploads/content/<?php echo $images->image_name; ?>"  alt="car-image"> 
-                </div>
+            <div class="container">
+                <div class="row1">
+                @foreach ($img as $images)
+                    @if($images->content_id == $res->id)
+                            
+                        <div class="img-container">
+                                <img class="small-img"  src="./uploads/content/<?php echo $images->image_name; ?>"  alt="car-image"> 
+                        </div>
                 @break
                   @endif
                @endforeach

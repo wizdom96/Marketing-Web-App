@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use App\Postadd;
+use App\ImagesUpload;
 use Illuminate\Http\Request;
 
 class advertise extends Controller
@@ -29,7 +30,7 @@ class advertise extends Controller
         
       $make = DB::table("cars")->pluck("car","id");
       $query = DB::table('content');
-      
+      $images = ImagesUpload::all();
       if($request)
       $query->where('approved', '=', 1);
 
@@ -62,7 +63,7 @@ class advertise extends Controller
   
    
        $results = $query->orderby('sponsored', 'desc')->paginate(7);
-        return view('index',['results'=>$results,'make'=>$make]);
+        return view('index',['results'=>$results,'make'=>$make, 'images'=>$images]);
         
      }
 
@@ -80,7 +81,7 @@ class advertise extends Controller
 
    public function viewmake() {
       $cars = \DB::select('select * from cars ');
-
+      $images = \DB::select('select * from cars ');
       return view('make',['cars'=>$cars]);
       
    }
