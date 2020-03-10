@@ -48,9 +48,6 @@ Route::get('post-content', function () {
   Route::get('dashboard/', 'AuthController@dashboard');
   Route::get('dashboard/newad',array('as'=>'myform','uses'=>'Postaddcontroller@myform'));
   Route::get('dashboard/newad/ajax/{id}','Postaddcontroller@myformAjax');
- 
-  
-
   Route::post('dashboard/postadd', 'Postaddcontroller@store');
 
   Route::post('dashboard/make','advertise@createmake');
@@ -82,16 +79,16 @@ Route::get('post-content', function () {
  Route::post('dashboard/newad', 'Postaddcontroller@store')->name('addcontent');
  
 
-Route::get('logout', 'AuthController@logout');
 
+ Route::get('logout', 'AuthController@logout');
 Auth::routes();
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-Route::get('/approvead/{id}','HomeController@approvead')->name('approve');
-Route::get('/deletead/{id}','HomeController@deletead')->name('delete');
-Route::get('/sponsored/{id}','HomeController@sponsored')->name('sponosored');
-Route::get('/unsponsored/{id}','HomeController@unsponsored')->name('unsponsored');
-Route::get('/dashboard/allusers/delete/{id}','HomeController@deleteuser')->name('delete');
 
-Route::get('/approvespon/{id}','HomeController@approvespon');
-Route::get('/deletespon/{id}','HomeController@deletespon');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('dashboard/approvead/{id}','HomeController@approvead')->name('approve');
+Route::get('dashboard/deletead/{id}','HomeController@deletead')->name('delete');
+Route::get('dashboard/sponsored/{id}','HomeController@sponsored')->name('sponosored');
+Route::get('dashboard/unsponsored/{id}','HomeController@unsponsored')->name('unsponsored');
+Route::get('/dashboard/allusers/delete/{id}','HomeController@deleteuser')->name('delete');
+Route::get('dashboard/approvespon/{id}','HomeController@approvespon');
+Route::get('dashboard/deletespon/{id}','HomeController@deletespon');
 

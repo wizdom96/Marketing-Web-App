@@ -65,6 +65,7 @@ class HomeController extends Controller
 
        public function deleteuser($id){
         \DB::table('users')->where('id', $id)->delete();
+        \DB::table('content')->where('user_id', '=', $id)->delete();
             return back();
        }
       

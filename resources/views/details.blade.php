@@ -29,15 +29,15 @@
                  <p >{{ $result->price }} €</p>
        
             
-                    <a href="{{ url('deletead') }}/{{$result->id}}" class="btn-primary btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">DELETE</a>
+                    <a href="{{ url('dashboard/deletead') }}/{{$result->id}}" class="btn-primary btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">DELETE</a>
 
                     @switch($result->sponsored)
                   @case(3)
-                    <a href="{{ url('unsponsored') }}/{{$result->id}}" class="btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">Unsponsore this!</a>
+                    <a href="{{ url('dashboard/unsponsored') }}/{{$result->id}}" class="btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">Unsponsore this!</a>
                     @break
                     @case(1)
                     @if(($result->approved)===1)
-                    <a href="{{ url('sponsored') }}/{{$result->id}}" class="btn-warning btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">Sponsore this!</a>
+                    <a href="{{ url('dashboard/sponsored') }}/{{$result->id}}" class="btn-warning btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">Sponsore this!</a>
                     @endif
                     @break
                      @endswitch

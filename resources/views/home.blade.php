@@ -57,8 +57,8 @@
                     <h4 class="pad" >{{ $result->title }} <br><br>
                     <p style="font-size:10px">Description:{{ $result->description }} €</p>
                     <p class="padd">{{ $result->price }} €</p>
-                    <a href="{{ url('approvead') }}/{{$result->id}}" class="btn-success btn-sm" onclick="return confirm('Are you sure you want to approve this ?');">Approve</a>
-                    <a href="{{ url('deletead') }}/{{$result->id}}" class="btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">DELETE</a></h4>
+                    <a href="{{ url('dashboard/approvead') }}/{{$result->id}}" class="btn-success btn-sm" onclick="return confirm('Are you sure you want to approve this ?');">Approve</a>
+                    <a href="{{ url('dashboard/deletead') }}/{{$result->id}}" class="btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">DELETE</a></h4>
                             </div>
                 <br>
             </div>
@@ -94,8 +94,8 @@
                
                <h4 class="pad" >{{ $res->title }} <br><br>
                     <p class="padd">{{ $res->price }} €</p>
-                    <a href="{{ url('approvespon') }}/{{$res->id}}" class="btn-warning btn-sm" onclick="return confirm('Are you sure you want to approve this ?');">Approve sponsorship</a>
-                    <a href="{{ url('deletespon') }}/{{$res->id}}" class="btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">Deny sponsorship</a></h4>
+                    <a href="{{ url('dashboard/approvespon') }}/{{$res->id}}" class="btn-warning btn-sm" onclick="return confirm('Are you sure you want to approve this ?');">Approve sponsorship</a>
+                    <a href="{{ url('dashboard/deletespon') }}/{{$res->id}}" class="btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this ad?');">Deny sponsorship</a></h4>
                     </div>
                    
      

@@ -91,8 +91,8 @@
               @foreach ($images as $image)
                     @if($image->content_id === $result->id)
                       
-                <div class="img-container">
-                        <img class="small-img"  src="uploads/content/<?php echo $image->image_name; ?>"  alt="car-image"> 
+                   <div class="img-container">
+                        <a class="small-img" href="product/{{$result->id}}"><img  href="about "class="small-img"  src="uploads/content/<?php echo $image->image_name; ?>"  alt="car-image"> </a>
                 </div>
                 @break
                   @endif
@@ -119,7 +119,7 @@
                     @if($image->content_id == $result->id)
                       
                 <div class="img-container">
-                        <img class="small-img"  src="uploads/content/<?php echo $image->image_name; ?>"  alt="car-image"> 
+                <a class="small-img" href="product/{{$result->id}}"> <img class="small-img"  src="uploads/content/<?php echo $image->image_name; ?>"  alt="car-image"> </a>
                 </div>
                 @break
                   @endif
