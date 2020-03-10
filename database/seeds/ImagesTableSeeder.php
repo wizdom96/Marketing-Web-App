@@ -201,6 +201,100 @@ class ImagesTableSeeder extends Seeder
                 'image_name'=>'27.jpg',
                 'content_id'=>'7'               //creating images for content
  
+            ),
+
+            array(
+                'id'=> 28,
+                'image_name'=>'25.jfif',
+                'content_id'=>'8'               //creating images for content
+ 
+            ),
+
+            array(
+                'id'=> 29,
+                'image_name'=>'26.jpg',
+                'content_id'=>'8'               //creating images for content
+ 
+            ),
+
+            array(
+                'id'=> 30,
+                'image_name'=>'27.jpg',
+                'content_id'=>'9'               //creating images for content
+ 
+            ),
+
+
+            array(
+                'id'=> 31,
+                'image_name'=>'25.jfif',
+                'content_id'=>'9'               //creating images for content
+ 
+            ),
+
+            array(
+                'id'=> 32,
+                'image_name'=>'26.jpg',
+                'content_id'=>'10'               //creating images for content
+ 
+            ),
+
+            array(
+                'id'=> 33,
+                'image_name'=>'27.jpg',
+                'content_id'=>'10'               //creating images for content
+ 
+            ),
+
+
+            array(
+                'id'=> 34,
+                'image_name'=>'25.jfif',
+                'content_id'=>'11'               //creating images for content
+ 
+            ),
+
+            array(
+                'id'=> 35,
+                'image_name'=>'26.jpg',
+                'content_id'=>'11'               //creating images for content
+ 
+            ),
+
+            array(
+                'id'=> 36,
+                'image_name'=>'18.jpg',
+                'content_id'=>'12'               //creating images for content
+ 
+            ),
+
+            array(
+                'id'=> 37,
+                'image_name'=>'6.jpg',
+                'content_id'=>'12'               //creating images for content
+ 
+            ),
+
+            array(
+                'id'=> 38,
+                'image_name'=>'5.jpg',
+                'content_id'=>'13'               //creating images for content
+ 
+            ),
+
+
+            array(
+                'id'=> 39,
+                'image_name'=>'22.jpg',
+                'content_id'=>'13'               //creating images for content
+ 
+            ),
+
+            array(
+                'id'=> 40,
+                'image_name'=>'11.jpg',
+                'content_id'=>'13'               //creating images for content
+ 
             )
     
 

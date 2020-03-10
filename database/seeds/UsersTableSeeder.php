@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
             array(
                 'id'=> 1,
                 'name'=>'Admin',
-                'email'=>'admin@example.com',         //creating USER
+                'email'=>'admin@example.com',         //creating admin
                 'city'=>'Prilep',
                 'mobile'=>'075111222',
                 'password'=>Hash::make('password'),
@@ -27,9 +27,19 @@ class UsersTableSeeder extends Seeder
             array(
                 'id'=> 2,
                 'name'=>'User',
-                'email'=>'user@example.com',         //creating USER
+                'email'=>'user@example.com',         //creating USER1
                 'city'=>'Skopje',
                 'mobile'=>'075888999',
+                'password'=>Hash::make('password'),
+                'permission'=> 0
+            ),
+
+            array(
+                'id'=> 3,
+                'name'=>'User2',
+                'email'=>'user2@example.com',         //creating USER2
+                'city'=>'Veles',
+                'mobile'=>'075998745',
                 'password'=>Hash::make('password'),
                 'permission'=> 0
             )
@@ -37,4 +47,4 @@ class UsersTableSeeder extends Seeder
             );
             DB::table('users')->insert($users);
         }
-}
+    }

@@ -77,6 +77,12 @@ class MakeModelTableSeeder extends Seeder
                 'id'=>7,
                 'car_model'=> 'Saxo' ,
                 'car_id'=> 3                                            //creating car model (model) 
+            ),
+
+            array(
+                'id'=>8,
+                'car_model'=> 'C5' ,
+                'car_id'=> 3                                            //creating car model (model) 
             )
             
             );
