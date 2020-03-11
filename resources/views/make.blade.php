@@ -3,7 +3,7 @@
 @section('make')
    @if     (collect(request()->segments())->last()==='make')
 <div class="container">
-    <div class="row">
+    <div class="row" style="padding-bottom:325px">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 
@@ -28,11 +28,11 @@
     </div>
 </div>
 
-<br><br><br><br><br><br><br>
+
 @endif
-@if     (collect(request()->segments())->last()==='makemodel')
+@if     (collect(request()->segments())->last() === 'makemodel')
 <div class="container">
-    <div class="row">
+    <div class="row" style="padding-bottom:280px">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 
@@ -67,7 +67,7 @@
         </div>
     </div>
 </div>
-<br><br><br><br><br><br><br>
+
 
 
 

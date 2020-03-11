@@ -6,8 +6,7 @@
       <div class="col-md-8 mb-5">
         <h2>What We Do</h2>
         <hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
+        <p><b>On cars.mk</b>, buyers can find new and used cars as well as motorcycles, trucks and motorhomes. Users who advertise their vehicle for sale have contact to customers across Macedonia and beyond. car.mk’s extensive choice and reach guarantee a balance between supply and demand making it possible to ensure excellent sales results. cars.mk is not involved at any stage in the purchase or sale of the vehicle.</p>
         <a class="btn btn-primary btn-lg" href="contact">Contact us</a>
       </div>
 </div>

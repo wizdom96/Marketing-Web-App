@@ -12,7 +12,7 @@
           <div class="product-img-container" >
                    @foreach ($image as $img)                 
                 
-                        <img src="../uploads/content/<?php echo $img->image_name; ?>" class="mySlides" alt="product-image"> 
+                        <img src="../uploads/content/<?php echo $img->image_name; ?>" onclick="plusDivs(-1)" class="mySlides" alt="product-image"> 
                
                 @endforeach
             
